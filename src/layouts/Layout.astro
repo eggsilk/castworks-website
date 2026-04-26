@@ -1,12 +1,38 @@
 ---
 import "../styles/global.css";
-import { COMPANY_NAME, META_DESCRIPTION, TAGLINE } from "../config";
+import {
+  COMPANY_NAME,
+  CONTACT_EMAIL,
+  META_DESCRIPTION,
+  TAGLINE,
+  SITE_URL,
+} from "../config";
 
 interface Props {
   title?: string;
+  /** Path of the current page, used to build canonical + og:url. Defaults to "/". */
+  path?: string;
 }
 
-const { title = COMPANY_NAME } = Astro.props;
+const { title = COMPANY_NAME, path = "/" } = Astro.props;
+const canonical = new URL(path, SITE_URL).toString();
+const ogImage = new URL("/og-image.png", SITE_URL).toString();
+
+// JSON-LD Organization schema. Search engines and link unfurlers use this for
+// rich results. Kept minimal — only fields we can stand behind.
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: COMPANY_NAME,
+  url: SITE_URL,
+  email: CONTACT_EMAIL,
+  description: META_DESCRIPTION,
+  slogan: TAGLINE,
+  founder: {
+    "@type": "Person",
+    name: "Ege Ipek",
+  },
+};
 ---
 
 <!doctype html>
@@ -14,13 +40,39 @@ const { title = COMPANY_NAME } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#FAF8F3" />
+    <meta name="robots" content="index,follow" />
     <meta name="description" content={META_DESCRIPTION} />
     <title>{title}</title>
 
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
     <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={COMPANY_NAME} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={TAGLINE} />
-    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="CastWorks — the risk-free infrastructure for creator marketing."
+    />
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={TAGLINE} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Structured data -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(orgSchema)}
+    />
 
     <!-- Fonts: Inter (body) + Instrument Serif (display) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

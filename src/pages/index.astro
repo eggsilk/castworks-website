@@ -8,6 +8,7 @@ import Methodology from "../components/Methodology.astro";
 import RiskReversal from "../components/RiskReversal.astro";
 import Authority from "../components/Authority.astro";
 import TerminalCTA from "../components/TerminalCTA.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
@@ -27,15 +28,14 @@ import TerminalCTA from "../components/TerminalCTA.astro";
 
   <TerminalCTA />
 
+  <Footer />
+
   {/*
-    Phase 2 build — complete.
-    Phase 3 backlog:
-      - Wire intake form to a real submission handler (Formspree / Basin /
-        Netlify Forms). See TODO in TerminalCTA.astro.
-      - Swap the Authority SVG pull-quote column for a real image if desired.
-      - Sticky "See if you qualify" CTA appearing after RiskReversal.
-      - Mobile refinement pass.
-      - SEO metadata: og:image, favicon, canonical, JSON-LD.
-      - Footer component.
+    Phase 3 backlog (remaining):
+      - og-image.png (1200x630) for social link previews — design pass needed
+      - Sticky "See if you qualify" CTA appearing after RiskReversal
+      - Mobile refinement pass
+      - Methodology Discovery copy out of sync with copy/pages.md (drift)
+      - $37B figure in Authority needs source verification
   */}
 </Layout>

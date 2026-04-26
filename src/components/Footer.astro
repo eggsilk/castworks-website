@@ -1,21 +1,75 @@
 ---
-import { COMPANY_NAME, CONTACT_EMAIL } from "../config";
+// Footer — minimal editorial chrome to close the page.
+//
+// Design intent: hairline rule above (visual close), generous vertical padding
+// to let the page breathe out, small left-aligned identity on the left,
+// contact + nav anchors on the right. No social links yet (no LinkedIn /
+// Twitter pages live). Same warm bg as the page — no dark-mode footer, no
+// SaaS treatment.
+import {
+  COMPANY_NAME,
+  CONTACT_EMAIL,
+  APPLY_ANCHOR,
+  HOW_IT_WORKS_ANCHOR,
+} from "../config";
+
+const year = new Date().getFullYear();
 ---
 
 <footer
-  class="border-t border-slate-800 py-10 px-6"
-  style="background-color: #0b0d11;"
+  class="px-6 md:px-10 lg:px-16 pt-16 pb-12 md:pt-20 md:pb-14"
+  style="background: var(--color-bg); border-top: 1px solid var(--color-rule);"
 >
-  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-    <span class="text-slate-500 text-sm font-medium">{COMPANY_NAME}</span>
-    <a
-      href={`mailto:${CONTACT_EMAIL}`}
-      class="text-slate-500 hover:text-white text-sm transition-colors"
+  <div
+    class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-10 md:gap-8"
+  >
+    <!-- Identity -->
+    <div>
+      <div
+        class="font-serif"
+        style="color: var(--color-ink); font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.05;"
+      >
+        {COMPANY_NAME}
+      </div>
+    </div>
+
+    <!-- Links -->
+    <nav
+      class="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 text-sm"
+      style="color: var(--color-ink-muted);"
+      aria-label="Footer"
     >
-      {CONTACT_EMAIL}
-    </a>
-    <span class="text-slate-700 text-sm">
-      &copy; {new Date().getFullYear()}
-    </span>
+      <a
+        href={HOW_IT_WORKS_ANCHOR}
+        class="footer-link"
+      >How it works</a>
+      <a
+        href={APPLY_ANCHOR}
+        class="footer-link"
+      >See if you qualify</a>
+      <a
+        href={`mailto:${CONTACT_EMAIL}`}
+        class="footer-link"
+      >{CONTACT_EMAIL}</a>
+    </nav>
+  </div>
+
+  <!-- Bottom row: hairline + copyright -->
+  <div
+    class="max-w-6xl mx-auto mt-12 md:mt-16 pt-6 text-xs"
+    style="border-top: 1px solid var(--color-rule); color: var(--color-ink-subtle);"
+  >
+    &copy; {year} {COMPANY_NAME}. All rights reserved.
   </div>
 </footer>
+
+<style>
+  .footer-link {
+    color: var(--color-ink-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .footer-link:hover {
+    color: var(--color-ink);
+  }
+</style>
