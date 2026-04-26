@@ -1,0 +1,37 @@
+---
+import { COMPANY_NAME, APPLY_ANCHOR, HOW_IT_WORKS_ANCHOR } from "../config";
+---
+
+<nav
+  class="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-6 md:px-10 lg:px-16 py-6"
+>
+  <!-- Wordmark -->
+  <a
+    href="/"
+    class="font-serif text-xl tracking-tight"
+    style="color: var(--color-ink);"
+  >
+    {COMPANY_NAME}
+  </a>
+
+  <!-- Right cluster -->
+  <div class="flex items-center gap-6 md:gap-8">
+    <a
+      href={HOW_IT_WORKS_ANCHOR}
+      class="hidden sm:inline text-sm transition-colors duration-200"
+      style="color: var(--color-ink-muted);"
+      onmouseover="this.style.color='var(--color-ink)'"
+      onmouseout="this.style.color='var(--color-ink-muted)'"
+    >
+      How it works
+    </a>
+
+    <a
+      href={APPLY_ANCHOR}
+      class="text-sm font-medium px-4 py-2 rounded-md transition-all duration-200 hover:opacity-90"
+      style="background: var(--color-accent); color: var(--color-dark-text);"
+    >
+      See if you qualify
+    </a>
+  </div>
+</nav>

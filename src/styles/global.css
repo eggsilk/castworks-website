@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  /* Palette — Pragmatic Premium */
+  --color-bg: #FAF8F3;           /* warm off-white */
+  --color-bg-card: #F2EEE5;      /* subtle card tone for warm surfaces */
+  --color-ink: #141414;          /* near-black, primary text */
+  --color-ink-muted: #5C5C5C;    /* secondary text */
+  --color-ink-subtle: #8C8C8C;   /* tertiary text */
+  --color-rule: #E4DFD4;         /* dividers, subtle borders */
+  --color-accent: #1F3A34;       /* deep forest teal — CTAs, emphasis */
+  --color-accent-hover: #162925; /* hover state */
+  --color-dark: #0E0E0E;         /* dark module background */
+  --color-dark-text: #FAFAFA;    /* text on dark */
+
+  /* Typography — Tailwind v4 token names so `font-sans` / `font-serif` utilities inherit these */
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    color: var(--color-ink);
+    background: var(--color-bg);
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-dark-text);
+  }
+}
+
+/* Hero entry animation — staggered fade-in */
+@keyframes heroReveal {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-animate {
+  animation: heroReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-delay-1 { animation-delay: 0.14s; }
+.hero-delay-2 { animation-delay: 0.28s; }
+.hero-delay-3 { animation-delay: 0.42s; }
+.hero-delay-4 { animation-delay: 0.56s; }
+
+/* Scroll-reveal for below-fold sections (driven by IntersectionObserver in Layout.astro) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-reveal-delay="1"] { transition-delay: 0.08s; }
+[data-reveal-delay="2"] { transition-delay: 0.16s; }
+[data-reveal-delay="3"] { transition-delay: 0.24s; }
+[data-reveal-delay="4"] { transition-delay: 0.32s; }

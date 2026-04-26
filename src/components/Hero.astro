@@ -1,0 +1,75 @@
+---
+import { APPLY_ANCHOR, HOW_IT_WORKS_ANCHOR } from "../config";
+---
+
+<section
+  class="relative min-h-screen flex flex-col"
+  style="background: var(--color-bg);"
+>
+  <!-- Slot for nav — nav is absolutely positioned inside this section -->
+  <slot name="nav" />
+
+  <!-- Hero content — vertically centered in remaining space -->
+  <div
+    class="flex-1 flex items-center px-6 md:px-10 lg:px-16 pt-28 pb-16"
+  >
+    <div class="w-full max-w-6xl mx-auto">
+      <!-- Headline -->
+      <h1
+        class="hero-animate font-serif leading-[0.96] tracking-tight"
+        style="
+          color: var(--color-ink);
+          font-size: clamp(2.75rem, 7.5vw, 7rem);
+        "
+      >
+        The <em style="font-style: italic;">risk-free</em> infrastructure<br />
+        for creator marketing.
+      </h1>
+
+      <!-- Sub-line: two stacked lines -->
+      <div
+        class="hero-animate hero-delay-1 mt-10 md:mt-12 max-w-2xl space-y-2"
+        style="color: var(--color-ink-muted);"
+      >
+        <p class="text-lg md:text-xl leading-relaxed">
+          End-to-end creator campaigns — strategy, discovery, delivery.
+        </p>
+        <p class="text-lg md:text-xl leading-relaxed">
+          Built for small-to-mid-sized companies. Commission-only: we earn when you do.
+        </p>
+      </div>
+
+      <!-- CTAs -->
+      <div
+        class="hero-animate hero-delay-2 mt-10 md:mt-14 flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-8"
+      >
+        <a
+          href={APPLY_ANCHOR}
+          class="inline-flex items-center gap-3 text-base font-medium px-7 py-4 rounded-md transition-all duration-200 hover:opacity-90"
+          style="background: var(--color-accent); color: var(--color-dark-text);"
+        >
+          See if you qualify
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+
+        <a
+          href={HOW_IT_WORKS_ANCHOR}
+          class="text-base transition-colors duration-200"
+          style="color: var(--color-ink-muted); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px;"
+          onmouseover="this.style.color='var(--color-ink)'"
+          onmouseout="this.style.color='var(--color-ink-muted)'"
+        >
+          How it works
+        </a>
+      </div>
+
+      <!-- Micro-copy below CTA — justifies the qualifier -->
+      <p
+        class="hero-animate hero-delay-3 mt-6 text-sm max-w-md"
+        style="color: var(--color-ink-subtle);"
+      >
+        We work on commission. That means we pick our campaigns carefully.
+      </p>
+    </div>
+  </div>
+</section>

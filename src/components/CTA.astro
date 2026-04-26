@@ -1,0 +1,50 @@
+---
+import { BOOKING_URL, CONTACT_EMAIL } from "../config";
+---
+
+<section
+  id="contact"
+  class="relative py-32 px-6 text-center overflow-hidden"
+  style="background-color: #08090d;"
+>
+  <!-- Radial glow -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="background: radial-gradient(ellipse 65% 55% at 50% 50%, rgba(51,92,255,0.13) 0%, transparent 70%);"
+  ></div>
+
+  <!-- Dot grid -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="
+      background-image: radial-gradient(rgba(51,92,255,0.12) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+    "
+  ></div>
+
+  <div class="relative max-w-3xl mx-auto" data-reveal>
+    <h2 class="text-white text-4xl sm:text-5xl font-bold tracking-tight leading-tight mb-6">
+      Ready to reach audiences<br />your competitors haven't found yet?
+    </h2>
+    <p class="text-slate-400 text-lg mb-10 leading-relaxed">
+      We're working with a select number of brand clients. Book a discovery call
+      to see if we're a fit.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center" data-reveal data-reveal-delay="1">
+      <a
+        href={BOOKING_URL}
+        class="bg-white text-slate-900 font-semibold text-base px-8 py-4 rounded-lg transition-all duration-200 hover:bg-slate-100 hover:scale-[1.02]"
+      >
+        Book a discovery call
+      </a>
+      <a
+        href={`mailto:${CONTACT_EMAIL}`}
+        class="text-slate-400 hover:text-white text-base transition-colors duration-200"
+      >
+        Or email us directly
+      </a>
+    </div>
+  </div>
+</section>

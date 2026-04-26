@@ -1,0 +1,249 @@
+---
+// Section 4 — Methodology
+// "How a campaign runs." — four steps, each paired with a line-art glyph that depicts
+// the actual work of that step.
+// Research delta applied in step 02: specific AI-ranking metrics rather than generic
+// "engagement/overlap/history/fit." Named signals act as a credibility proxy.
+//
+// Section id is "how-it-works" — matches HOW_IT_WORKS_ANCHOR in config.ts, so the
+// Nav link and Hero secondary CTA now resolve to this section.
+---
+
+<section
+  id="how-it-works"
+  class="py-32 md:py-44 px-6 md:px-10 lg:px-16"
+  style="background: var(--color-bg);"
+>
+  <div class="max-w-6xl mx-auto">
+    <!-- Section heading + sub-heading -->
+    <h2
+      data-reveal
+      class="font-serif leading-[1.02] tracking-tight max-w-3xl"
+      style="
+        color: var(--color-ink);
+        font-size: clamp(2rem, 5.2vw, 4.25rem);
+      "
+    >
+      How a campaign runs.
+    </h2>
+
+    <p
+      data-reveal
+      data-reveal-delay="1"
+      class="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-relaxed"
+      style="color: var(--color-ink-muted);"
+    >
+      Four steps from brief to close. Typically two to four weeks, end to end.
+    </p>
+
+    <!-- Four steps — vertical stack, each step is 2-col on desktop -->
+    <div class="mt-20 md:mt-24">
+      <!-- Step 01 — Strategy -->
+      <div
+        data-reveal
+        data-reveal-delay="2"
+        class="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 md:gap-16 py-12 md:py-16 border-t"
+        style="border-color: var(--color-rule);"
+      >
+        <div>
+          <!-- Glyph: target/crosshair — strategy = aiming at a defined audience segment -->
+          <div class="w-12 h-12" style="color: var(--color-ink);">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full" aria-hidden="true">
+              <circle cx="24" cy="24" r="15" />
+              <circle cx="24" cy="24" r="9" />
+              <circle cx="24" cy="24" r="3" fill="currentColor" stroke="none" />
+              <line x1="24" y1="4" x2="24" y2="8" />
+              <line x1="24" y1="40" x2="24" y2="44" />
+              <line x1="4" y1="24" x2="8" y2="24" />
+              <line x1="40" y1="24" x2="44" y2="24" />
+            </svg>
+          </div>
+          <div
+            class="mt-8 text-xs uppercase tracking-[0.22em]"
+            style="color: var(--color-ink-subtle);"
+          >
+            01
+          </div>
+          <div
+            class="mt-2 font-serif"
+            style="color: var(--color-ink); font-size: clamp(1.5rem, 2.2vw, 1.875rem);"
+          >
+            Strategy
+          </div>
+        </div>
+        <div
+          class="max-w-xl text-base md:text-lg leading-relaxed"
+          style="color: var(--color-ink-muted);"
+        >
+          You tell us your product, your audience, your goals. We translate that
+          into a campaign brief: which audience segment, which creator archetype,
+          what kind of placement, what budget shape. If creator marketing isn't
+          the right channel for your goal, we say so before anything moves.
+        </div>
+      </div>
+
+      <!-- Step 02 — Discovery -->
+      <div
+        data-reveal
+        data-reveal-delay="3"
+        class="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 md:gap-16 py-12 md:py-16 border-t"
+        style="border-color: var(--color-rule);"
+      >
+        <div>
+          <!-- Glyph: magnifier scanning a dense field — discovery = our tooling on the creator universe -->
+          <div class="w-12 h-12" style="color: var(--color-ink);">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full" aria-hidden="true">
+              <!-- background dots visible through/around the lens -->
+              <circle cx="12" cy="10" r="1" fill="currentColor" stroke="none" />
+              <circle cx="30" cy="8" r="1" fill="currentColor" stroke="none" />
+              <circle cx="8" cy="24" r="1" fill="currentColor" stroke="none" />
+              <circle cx="38" cy="18" r="1" fill="currentColor" stroke="none" />
+              <circle cx="14" cy="36" r="1" fill="currentColor" stroke="none" />
+              <!-- lens -->
+              <circle cx="21" cy="21" r="11" />
+              <!-- dots inside lens (highlighted / scanned) -->
+              <circle cx="17" cy="18" r="1.2" fill="currentColor" stroke="none" />
+              <circle cx="24" cy="16" r="1.2" fill="currentColor" stroke="none" />
+              <circle cx="25" cy="24" r="1.2" fill="currentColor" stroke="none" />
+              <circle cx="18" cy="25" r="1.2" fill="currentColor" stroke="none" />
+              <!-- handle -->
+              <line x1="29" y1="29" x2="40" y2="40" />
+            </svg>
+          </div>
+          <div
+            class="mt-8 text-xs uppercase tracking-[0.22em]"
+            style="color: var(--color-ink-subtle);"
+          >
+            02
+          </div>
+          <div
+            class="mt-2 font-serif"
+            style="color: var(--color-ink); font-size: clamp(1.5rem, 2.2vw, 1.875rem);"
+          >
+            Discovery
+          </div>
+        </div>
+        <div
+          class="max-w-xl text-base md:text-lg leading-relaxed"
+          style="color: var(--color-ink-muted);"
+        >
+          Our internal tooling identifies creators whose audiences align with
+          your brief. Candidates are ranked on engagement velocity, audience
+          demographic overlap, and sentiment patterns — not vanity follower
+          counts. Every match is reviewed by hand.
+        </div>
+      </div>
+
+      <!-- Step 03 — Package -->
+      <div
+        data-reveal
+        data-reveal-delay="4"
+        class="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 md:gap-16 py-12 md:py-16 border-t"
+        style="border-color: var(--color-rule);"
+      >
+        <div>
+          <!-- Glyph: stacked cards with a selection mark — packaging = the ranked shortlist -->
+          <div class="w-12 h-12" style="color: var(--color-ink);">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full" aria-hidden="true">
+              <rect x="8" y="14" width="22" height="28" rx="1" />
+              <rect x="14" y="9" width="22" height="28" rx="1" />
+              <polyline points="20 20 24 24 31 17" />
+              <line x1="20" y1="30" x2="30" y2="30" />
+            </svg>
+          </div>
+          <div
+            class="mt-8 text-xs uppercase tracking-[0.22em]"
+            style="color: var(--color-ink-subtle);"
+          >
+            03
+          </div>
+          <div
+            class="mt-2 font-serif"
+            style="color: var(--color-ink); font-size: clamp(1.5rem, 2.2vw, 1.875rem);"
+          >
+            Package
+          </div>
+        </div>
+        <div
+          class="max-w-xl text-base md:text-lg leading-relaxed"
+          style="color: var(--color-ink-muted);"
+        >
+          You receive a ranked shortlist with per-creator rationale — what they
+          make, who watches, what they've run before, why they fit. You pick the
+          bundle.
+        </div>
+      </div>
+
+      <!-- Step 04 — Close -->
+      <div
+        data-reveal
+        data-reveal-delay="5"
+        class="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 md:gap-16 py-12 md:py-16 border-t border-b"
+        style="border-color: var(--color-rule);"
+      >
+        <div>
+          <!-- Glyph: contract with signature — close = signed deals -->
+          <div class="w-12 h-12" style="color: var(--color-ink);">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full" aria-hidden="true">
+              <rect x="12" y="6" width="24" height="36" rx="1" />
+              <line x1="17" y1="14" x2="31" y2="14" />
+              <line x1="17" y1="20" x2="27" y2="20" />
+              <line x1="17" y1="26" x2="31" y2="26" />
+              <!-- Signature squiggle -->
+              <path d="M17 34 Q 20 30, 22 34 T 26 34 T 31 34" />
+            </svg>
+          </div>
+          <div
+            class="mt-8 text-xs uppercase tracking-[0.22em]"
+            style="color: var(--color-ink-subtle);"
+          >
+            04
+          </div>
+          <div
+            class="mt-2 font-serif"
+            style="color: var(--color-ink); font-size: clamp(1.5rem, 2.2vw, 1.875rem);"
+          >
+            Close
+          </div>
+        </div>
+        <div
+          class="max-w-xl text-base md:text-lg leading-relaxed"
+          style="color: var(--color-ink-muted);"
+        >
+          We handle outreach, negotiate contracts, coordinate placement, and
+          track results. You approve the final package. We close it. You pay on
+          deals that ship.
+        </div>
+      </div>
+    </div>
+
+    <!-- "What you don't do" — punchline aside -->
+    <div
+      data-reveal
+      data-reveal-delay="6"
+      class="mt-20 md:mt-28 max-w-3xl"
+    >
+      <div
+        class="text-xs uppercase tracking-[0.22em]"
+        style="color: var(--color-ink-subtle);"
+      >
+        What you don't do
+      </div>
+      <p
+        class="mt-5 font-serif leading-snug"
+        style="
+          color: var(--color-ink);
+          font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+        "
+      >
+        Sourcing. Vetting. Outreach. Contracts. Reporting.
+      </p>
+      <p
+        class="mt-5 text-base md:text-lg leading-relaxed"
+        style="color: var(--color-ink-muted);"
+      >
+        Those are our job. Your job is the brief and the approval.
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,134 @@
+---
+// Section 6 — Authority (Manifesto + founder byline)
+//
+// Layout:
+//   - Full-width section heading at top
+//   - 2-col grid below: body essay (left, 60%) + pull-quote (right, 40%)
+//   - Pull-quote is vertically centered so it lands in the reader's peripheral
+//     scan around paragraph 2-3 of the body
+//   - Byline (hairline + name + role) sits below the grid, left-aligned
+//
+// The pull-quote is a verbatim excerpt of the essay's closing line — magazine
+// convention. Its job isn't to add new content; it's to amplify the thesis and
+// fill the right margin with something functional (the line the skimmer should
+// take away), not decorative.
+//
+// Essay body is set in Instrument Serif at reading size with loose leading and
+// natural column measure (no max-w fighting the grid — the column constrains).
+//
+// Copy: "By 2025, it will clear $37B globally" was future-dated when written.
+// Shifted tense since 2025 is now historical. Verify the figure before launch.
+---
+
+<section
+  id="why"
+  class="py-32 md:py-44 px-6 md:px-10 lg:px-16"
+  style="background: var(--color-bg);"
+>
+  <div class="max-w-6xl mx-auto">
+    <!-- Full-width heading -->
+    <h2
+      data-reveal
+      class="font-serif leading-[1.02] tracking-tight max-w-3xl"
+      style="
+        color: var(--color-ink);
+        font-size: clamp(2rem, 5.2vw, 4.25rem);
+      "
+    >
+      Why this exists.
+    </h2>
+
+    <!-- 2-col: essay body (left) + pull-quote (right, vertically centered) -->
+    <div
+      class="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-12 md:gap-16 lg:gap-24"
+    >
+      <!-- Essay body — serif, generous leading -->
+      <div
+        data-reveal
+        data-reveal-delay="1"
+        class="font-serif space-y-6 md:space-y-7 min-w-0"
+        style="
+          color: var(--color-ink);
+          font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+          line-height: 1.55;
+        "
+      >
+        <p>
+          Creator advertising grows four times faster than total media spend.
+          Global spend on the channel now clears $37B. Every number says it's
+          one of the most efficient ways for a company to reach a specific
+          audience.
+        </p>
+        <p>
+          And yet creator marketing has effectively been reserved for
+          enterprise budgets. Not because the creators aren't there — the
+          creators are everywhere. Because nobody has built the infrastructure
+          to serve anyone below enterprise scale.
+        </p>
+        <p>
+          There's a structural reason. Running a creator campaign end-to-end
+          — scoping, sourcing, vetting, outreach, contracts, reporting —
+          takes real hours. At enterprise budgets, an agency absorbs those
+          hours per client. At mid-market budgets, they can't. So the
+          mid-market gets two leftover options: software you have to operate
+          yourself, or agencies that don't really want your business.
+        </p>
+        <p>
+          CastWorks fixes the math. Our internal tooling collapses the cost
+          of discovery and vetting by orders of magnitude. What's left is the
+          work that can't be automated — and that stays human. The result is
+          an agency-grade service priced at a commission a real mid-market
+          company can sustain.
+        </p>
+        <p>
+          The channel shouldn't be a luxury anymore. That's what we're
+          building.
+        </p>
+      </div>
+
+      <!-- Pull-quote — vertically centered in its column, display serif -->
+      <aside
+        data-reveal
+        data-reveal-delay="2"
+        class="md:self-center min-w-0"
+      >
+        <div
+          class="w-12 h-px"
+          style="background: var(--color-ink);"
+        ></div>
+        <blockquote
+          class="mt-6 md:mt-8 font-serif leading-[1.08] tracking-tight"
+          style="
+            color: var(--color-ink);
+            font-size: clamp(1.75rem, 3.2vw, 3rem);
+          "
+        >
+          The channel shouldn't be a luxury anymore.
+        </blockquote>
+      </aside>
+    </div>
+
+    <!-- Byline: hairline rule + name + role, left-aligned under the grid -->
+    <div
+      data-reveal
+      data-reveal-delay="3"
+      class="mt-16 md:mt-20"
+    >
+      <div class="w-14 h-px" style="background: var(--color-ink);"></div>
+      <div class="mt-6 flex items-baseline gap-4 flex-wrap">
+        <span
+          class="font-serif"
+          style="color: var(--color-ink); font-size: clamp(1.125rem, 1.4vw, 1.375rem);"
+        >
+          Ege Ipek
+        </span>
+        <span
+          class="text-xs uppercase tracking-[0.22em]"
+          style="color: var(--color-ink-subtle);"
+        >
+          Founder
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

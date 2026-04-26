@@ -1,0 +1,433 @@
+---
+// Section 7 — Terminal CTA (Intake form)
+// "Let's see if we fit." — the page's resolution point.
+//
+// Layout: narrow centered column (max-w-2xl). Every prior section has been
+// left-aligned on max-w-6xl; this is the first time the page funnels inward.
+// That centering is intentional — it signals convergence/close. Content inside
+// the column is still left-aligned for readability.
+//
+// Form: 4 questions matching pages.md Section 7 spec. Fields use underline-only
+// inputs (editorial restraint — no boxed SaaS inputs). Budget is a custom
+// radio-pill segmented control. Submit is the same accent button as the hero.
+//
+// Submission: AJAX POST to Formspree. The form retains a real `action` so it
+// still works with JS disabled — Formspree renders its own thanks page in that
+// case. With JS, the script below intercepts, posts via fetch with Accept:
+// application/json, and reveals the in-page thanks block on success or an
+// error block on failure. `_gotcha` is Formspree's honeypot (bots fill it,
+// real users can't). `_subject` sets the inbound email subject.
+import { CONTACT_EMAIL, FORMSPREE_ENDPOINT } from "../config";
+---
+
+<section
+  id="apply"
+  class="py-32 md:py-44 px-6 md:px-10 lg:px-16"
+  style="background: var(--color-bg);"
+>
+  <div class="max-w-2xl mx-auto">
+    <!-- Heading -->
+    <h2
+      data-reveal
+      class="font-serif leading-[1.02] tracking-tight"
+      style="
+        color: var(--color-ink);
+        font-size: clamp(2rem, 5.2vw, 4.25rem);
+      "
+    >
+      Let's see if we fit.
+    </h2>
+
+    <!-- Intro body -->
+    <div
+      data-reveal
+      data-reveal-delay="1"
+      class="mt-8 md:mt-10 space-y-5 text-lg md:text-xl leading-relaxed"
+      style="color: var(--color-ink-muted);"
+    >
+      <p>
+        Creator marketing only works for certain businesses. The form below
+        takes three minutes and tells us enough to know whether we should
+        talk.
+      </p>
+      <p>
+        If we're a fit, we'll scope a campaign for you. If we're not, we'll
+        tell you.
+      </p>
+    </div>
+
+    <!-- Form -->
+    <form
+      id="intake-form"
+      action={FORMSPREE_ENDPOINT}
+      method="post"
+      data-reveal
+      data-reveal-delay="2"
+      class="mt-14 md:mt-20 space-y-12"
+      novalidate
+    >
+      <!-- Formspree metadata: subject line on the inbound email -->
+      <input
+        type="hidden"
+        name="_subject"
+        value="CastWorks intake — new submission"
+      />
+      <!-- Honeypot: bots fill this; real users never see it. Formspree silently
+           drops submissions where this field has any value. -->
+      <input
+        type="text"
+        name="_gotcha"
+        tabindex="-1"
+        autocomplete="off"
+        style="position:absolute; left:-10000px; width:1px; height:1px; opacity:0;"
+        aria-hidden="true"
+      />
+      <!-- Q1: Company -->
+      <div>
+        <label
+          for="q-company"
+          class="block text-xs uppercase tracking-[0.22em]"
+          style="color: var(--color-ink-subtle);"
+        >
+          01 — Company
+        </label>
+        <div
+          class="mt-3 font-serif leading-snug"
+          style="color: var(--color-ink); font-size: clamp(1.125rem, 1.6vw, 1.375rem);"
+        >
+          What's your company, and what do you sell?
+        </div>
+        <input
+          id="q-company"
+          name="company"
+          type="text"
+          required
+          autocomplete="organization"
+          class="intake-input mt-5"
+        />
+      </div>
+
+      <!-- Q2: Budget -->
+      <fieldset>
+        <legend
+          class="block text-xs uppercase tracking-[0.22em]"
+          style="color: var(--color-ink-subtle);"
+        >
+          02 — Budget
+        </legend>
+        <div
+          class="mt-3 font-serif leading-snug"
+          style="color: var(--color-ink); font-size: clamp(1.125rem, 1.6vw, 1.375rem);"
+        >
+          Roughly, what's your monthly marketing budget?
+        </div>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <label class="intake-radio">
+            <input type="radio" name="budget" value="under-5k" required />
+            <span>Under $5K</span>
+          </label>
+          <label class="intake-radio">
+            <input type="radio" name="budget" value="5k-15k" />
+            <span>$5K – $15K</span>
+          </label>
+          <label class="intake-radio">
+            <input type="radio" name="budget" value="15k-50k" />
+            <span>$15K – $50K</span>
+          </label>
+          <label class="intake-radio">
+            <input type="radio" name="budget" value="50k-plus" />
+            <span>$50K+</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Q3: Previous campaigns -->
+      <div>
+        <label
+          for="q-history"
+          class="block text-xs uppercase tracking-[0.22em]"
+          style="color: var(--color-ink-subtle);"
+        >
+          03 — History
+        </label>
+        <div
+          class="mt-3 font-serif leading-snug"
+          style="color: var(--color-ink); font-size: clamp(1.125rem, 1.6vw, 1.375rem);"
+        >
+          Have you run creator or influencer campaigns before? Briefly: what
+          happened?
+        </div>
+        <textarea
+          id="q-history"
+          name="history"
+          rows="3"
+          class="intake-input mt-5 resize-none"
+        ></textarea>
+      </div>
+
+      <!-- Q4: Email + name — two fields side by side on md+ -->
+      <div>
+        <div
+          class="block text-xs uppercase tracking-[0.22em]"
+          style="color: var(--color-ink-subtle);"
+        >
+          04 — You
+        </div>
+        <div
+          class="mt-3 font-serif leading-snug"
+          style="color: var(--color-ink); font-size: clamp(1.125rem, 1.6vw, 1.375rem);"
+        >
+          Your email, and who should we reach?
+        </div>
+        <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div>
+            <label
+              for="q-email"
+              class="sr-only"
+            >
+              Email
+            </label>
+            <input
+              id="q-email"
+              name="email"
+              type="email"
+              required
+              autocomplete="email"
+              placeholder="you@company.com"
+              class="intake-input"
+            />
+          </div>
+          <div>
+            <label
+              for="q-name"
+              class="sr-only"
+            >
+              Name
+            </label>
+            <input
+              id="q-name"
+              name="name"
+              type="text"
+              required
+              autocomplete="name"
+              placeholder="Your name"
+              class="intake-input"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="pt-2">
+        <button
+          id="intake-submit"
+          type="submit"
+          class="inline-flex items-center gap-3 text-base font-medium px-7 py-4 rounded-md transition-all duration-200 hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
+          style="background: var(--color-accent); color: var(--color-dark-text);"
+        >
+          <span data-submit-label>See if we're a fit</span>
+          <span aria-hidden="true">&rarr;</span>
+        </button>
+        <p
+          class="mt-5 text-xs leading-relaxed max-w-md"
+          style="color: var(--color-ink-subtle);"
+        >
+          We use your details only to reply. No marketing list, no third-party sharing.
+        </p>
+      </div>
+    </form>
+
+    <!-- Submission error state (hidden until a fetch failure occurs) -->
+    <div
+      id="intake-error"
+      hidden
+      role="alert"
+      class="mt-10 p-6 rounded-md"
+      style="background: var(--color-bg-card); border: 1px solid var(--color-rule);"
+    >
+      <div
+        class="font-serif leading-snug"
+        style="color: var(--color-ink); font-size: clamp(1.125rem, 1.6vw, 1.375rem);"
+      >
+        Something went wrong sending that.
+      </div>
+      <p
+        class="mt-3 text-base leading-relaxed"
+        style="color: var(--color-ink-muted);"
+      >
+        Please try again, or email us directly at
+        <a
+          href={`mailto:${CONTACT_EMAIL}`}
+          style="color: var(--color-ink); text-decoration: underline; text-underline-offset: 4px;"
+        >{CONTACT_EMAIL}</a>.
+      </p>
+    </div>
+
+    <!-- Post-submit confirmation (hidden until form submits) -->
+    <div
+      id="intake-thanks"
+      hidden
+      class="mt-14 md:mt-20 p-8 rounded-md"
+      style="background: var(--color-bg-card); border: 1px solid var(--color-rule);"
+    >
+      <div
+        class="font-serif leading-snug"
+        style="color: var(--color-ink); font-size: clamp(1.375rem, 2.2vw, 1.875rem);"
+      >
+        Thanks — we'll be in touch.
+      </div>
+      <p
+        class="mt-3 text-base leading-relaxed"
+        style="color: var(--color-ink-muted);"
+      >
+        We read every intake ourselves. If we're a fit, you'll hear back within
+        two business days.
+      </p>
+    </div>
+
+    <!-- Fallback: email link -->
+    <div
+      data-reveal
+      data-reveal-delay="3"
+      class="mt-12 md:mt-14 text-sm"
+      style="color: var(--color-ink-subtle);"
+    >
+      Prefer email?
+      <a
+        href={`mailto:${CONTACT_EMAIL}`}
+        class="ml-1 transition-colors"
+        style="color: var(--color-ink-muted); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px;"
+        onmouseover="this.style.color='var(--color-ink)'"
+        onmouseout="this.style.color='var(--color-ink-muted)'"
+      >
+        {CONTACT_EMAIL}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Editorial underline-only inputs — no boxes, no rounded corners */
+  .intake-input {
+    width: 100%;
+    padding: 0.625rem 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-rule);
+    color: var(--color-ink);
+    font-family: inherit;
+    font-size: 1.0625rem;
+    line-height: 1.5;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+  .intake-input::placeholder {
+    color: var(--color-ink-subtle);
+    opacity: 1;
+  }
+  .intake-input:focus {
+    border-bottom-color: var(--color-ink);
+    border-bottom-width: 2px;
+    /* Offset padding so the field doesn't shift when border thickens */
+    padding-bottom: calc(0.625rem - 1px);
+  }
+  /* Only style invalid state once the user has interacted with the field.
+     Browsers treat required empty fields as :invalid from page load, so we
+     gate on a JS-applied .touched class (toggled on blur) instead. */
+  .intake-input.touched:invalid:not(:focus) {
+    border-bottom-color: var(--color-accent);
+  }
+
+  /* Radio-pill segmented control */
+  .intake-radio {
+    cursor: pointer;
+    user-select: none;
+  }
+  .intake-radio input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .intake-radio span {
+    display: inline-block;
+    padding: 0.625rem 1.125rem;
+    border: 1px solid var(--color-rule);
+    border-radius: 9999px;
+    font-size: 0.9375rem;
+    color: var(--color-ink-muted);
+    background: transparent;
+    transition: all 0.18s ease;
+  }
+  .intake-radio:hover span {
+    border-color: var(--color-ink-subtle);
+    color: var(--color-ink);
+  }
+  .intake-radio input:checked + span {
+    background: var(--color-ink);
+    border-color: var(--color-ink);
+    color: var(--color-dark-text);
+  }
+  .intake-radio input:focus-visible + span {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  /* Remove default fieldset styling */
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+</style>
+
+<script>
+  const form = document.getElementById("intake-form") as HTMLFormElement | null;
+  const thanks = document.getElementById("intake-thanks");
+  const errorBlock = document.getElementById("intake-error");
+  const submitBtn = document.getElementById("intake-submit") as HTMLButtonElement | null;
+  const submitLabel = submitBtn?.querySelector<HTMLElement>("[data-submit-label]") ?? null;
+
+  if (form && thanks && errorBlock && submitBtn && submitLabel) {
+    const defaultLabel = submitLabel.textContent ?? "See if we're a fit";
+
+    form.querySelectorAll<HTMLElement>(".intake-input").forEach((el) => {
+      el.addEventListener("blur", () => el.classList.add("touched"));
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.querySelectorAll<HTMLElement>(".intake-input").forEach((el) => {
+          el.classList.add("touched");
+        });
+        form.reportValidity();
+        return;
+      }
+
+      errorBlock.hidden = true;
+      submitBtn.disabled = true;
+      submitLabel.textContent = "Sending…";
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: new FormData(form),
+        });
+
+        if (!res.ok) throw new Error(`Formspree responded ${res.status}`);
+
+        form.hidden = true;
+        thanks.hidden = false;
+        thanks.scrollIntoView({ behavior: "smooth", block: "center" });
+      } catch (err) {
+        console.error("Intake submission failed:", err);
+        submitBtn.disabled = false;
+        submitLabel.textContent = defaultLabel;
+        errorBlock.hidden = false;
+        errorBlock.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+  }
+</script>
