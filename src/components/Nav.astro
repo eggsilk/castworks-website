@@ -3,18 +3,17 @@ import { COMPANY_NAME, APPLY_ANCHOR, HOW_IT_WORKS_ANCHOR } from "../config";
 ---
 
 <nav
-  class="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-6 md:px-10 lg:px-16 py-6"
+  data-nav
+  class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 lg:px-16 py-5 md:py-6"
 >
-  <!-- Wordmark -->
   <a
     href="/"
-    class="font-serif text-xl tracking-tight"
+    class="font-serif tracking-tight text-3xl md:text-5xl leading-none"
     style="color: var(--color-ink);"
   >
     {COMPANY_NAME}
   </a>
 
-  <!-- Right cluster -->
   <div class="flex items-center gap-6 md:gap-8">
     <a
       href={HOW_IT_WORKS_ANCHOR}
@@ -35,3 +34,30 @@ import { COMPANY_NAME, APPLY_ANCHOR, HOW_IT_WORKS_ANCHOR } from "../config";
     </a>
   </div>
 </nav>
+
+<script>
+  const nav = document.querySelector<HTMLElement>("nav[data-nav]");
+  if (nav) {
+    nav.style.transition =
+      "background-color 0.25s ease, border-color 0.25s ease, backdrop-filter 0.25s ease, -webkit-backdrop-filter 0.25s ease";
+    nav.style.borderBottom = "1px solid transparent";
+
+    const update = () => {
+      const scrolled = window.scrollY > 24;
+      nav.dataset.scrolled = scrolled ? "true" : "false";
+      if (scrolled) {
+        nav.style.backgroundColor = "rgba(250, 248, 243, 0.85)";
+        (nav.style as any).backdropFilter = "saturate(140%) blur(10px)";
+        (nav.style as any).webkitBackdropFilter = "saturate(140%) blur(10px)";
+        nav.style.borderBottomColor = "var(--color-rule)";
+      } else {
+        nav.style.backgroundColor = "transparent";
+        (nav.style as any).backdropFilter = "none";
+        (nav.style as any).webkitBackdropFilter = "none";
+        nav.style.borderBottomColor = "transparent";
+      }
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+  }
+</script>

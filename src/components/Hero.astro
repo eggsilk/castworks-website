@@ -6,12 +6,10 @@ import { APPLY_ANCHOR, HOW_IT_WORKS_ANCHOR } from "../config";
   class="relative min-h-screen flex flex-col"
   style="background: var(--color-bg);"
 >
-  <!-- Slot for nav — nav is absolutely positioned inside this section -->
-  <slot name="nav" />
-
-  <!-- Hero content — vertically centered in remaining space -->
+  <!-- Hero content — vertically centered in remaining space.
+       Nav is fixed at the document level; pt-32 keeps content clear of it. -->
   <div
-    class="flex-1 flex items-center px-6 md:px-10 lg:px-16 pt-28 pb-16"
+    class="flex-1 flex items-center px-6 md:px-10 lg:px-16 pt-32 md:pt-36 pb-16"
   >
     <div class="w-full max-w-6xl mx-auto">
       <!-- Headline -->
