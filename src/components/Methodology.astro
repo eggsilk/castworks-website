@@ -1,12 +1,10 @@
 ---
 // Section 4 — Methodology
-// "How a campaign runs." — four steps, each paired with a line-art glyph that depicts
-// the actual work of that step.
-// Research delta applied in step 02: specific AI-ranking metrics rather than generic
-// "engagement/overlap/history/fit." Named signals act as a credibility proxy.
+// "How the pipeline gets built." — four steps from brief to hand-off, each paired
+// with a line-art glyph that depicts the actual work of that step.
 //
 // Section id is "how-it-works" — matches HOW_IT_WORKS_ANCHOR in config.ts, so the
-// Nav link and Hero secondary CTA now resolve to this section.
+// Nav link and Hero secondary CTA resolve here.
 ---
 
 <section
@@ -142,13 +140,19 @@
         style="border-color: var(--color-rule);"
       >
         <div>
-          <!-- Glyph: stacked cards with a selection mark — packaging = the ranked shortlist -->
+          <!-- Glyph: two speech bubbles — warm-up = first contact, exchange with the creator -->
           <div class="w-12 h-12" style="color: var(--color-ink);">
             <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full" aria-hidden="true">
-              <rect x="8" y="14" width="22" height="28" rx="1" />
-              <rect x="14" y="9" width="22" height="28" rx="1" />
-              <polyline points="20 20 24 24 31 17" />
-              <line x1="20" y1="30" x2="30" y2="30" />
+              <!-- Outgoing bubble (top-left) -->
+              <rect x="4" y="8" width="26" height="14" rx="2" />
+              <line x1="9" y1="13" x2="25" y2="13" />
+              <line x1="9" y1="17" x2="21" y2="17" />
+              <polyline points="14 22 12 25 16 22" />
+              <!-- Reply bubble (bottom-right) -->
+              <rect x="18" y="26" width="26" height="14" rx="2" />
+              <line x1="23" y1="31" x2="39" y2="31" />
+              <line x1="23" y1="35" x2="35" y2="35" />
+              <polyline points="32 26 34 23 30 26" />
             </svg>
           </div>
           <div
@@ -182,15 +186,17 @@
         style="border-color: var(--color-rule);"
       >
         <div>
-          <!-- Glyph: contract with signature — close = signed deals -->
+          <!-- Glyph: stack → arrow → open frame — hand-off = the pipeline transferred to you -->
           <div class="w-12 h-12" style="color: var(--color-ink);">
             <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full" aria-hidden="true">
-              <rect x="12" y="6" width="24" height="36" rx="1" />
-              <line x1="17" y1="14" x2="31" y2="14" />
-              <line x1="17" y1="20" x2="27" y2="20" />
-              <line x1="17" y1="26" x2="31" y2="26" />
-              <!-- Signature squiggle -->
-              <path d="M17 34 Q 20 30, 22 34 T 26 34 T 31 34" />
+              <!-- Source: pipeline stack on our side -->
+              <rect x="4" y="14" width="14" height="20" rx="1" />
+              <rect x="7" y="11" width="14" height="20" rx="1" />
+              <!-- Transfer arrow -->
+              <line x1="24" y1="22" x2="36" y2="22" />
+              <polyline points="32 18 36 22 32 26" />
+              <!-- Destination: open receiving frame (you) -->
+              <path d="M40 14 L46 14 L46 30 L40 30" />
             </svg>
           </div>
           <div
