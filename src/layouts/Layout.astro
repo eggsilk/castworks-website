@@ -16,7 +16,7 @@ interface Props {
 
 const { title = COMPANY_NAME, path = "/" } = Astro.props;
 const canonical = new URL(path, SITE_URL).toString();
-const ogImage = new URL("/og-image.png", SITE_URL).toString();
+const ogImage = new URL("/og-image-2.png", SITE_URL).toString();
 
 // JSON-LD Organization schema. Search engines and link unfurlers use this for
 // rich results. Kept minimal — only fields we can stand behind.
@@ -59,7 +59,7 @@ const orgSchema = {
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="CastWorks — the risk-free infrastructure for creator marketing."
+      content="CastWorks — the creators your database missed."
     />
 
     <!-- Twitter card -->
