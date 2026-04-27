@@ -1,0 +1,73 @@
+---
+// Hidden source page for the LinkedIn personal-profile banner.
+// 1584x396 spec. Rendered to PNG via html2canvas and uploaded
+// directly to LinkedIn — not served as a public site asset.
+// Kept in repo so re-exports are easy when copy or brand shifts.
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>LinkedIn banner source</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { background: #2a2a2a; }
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      .banner {
+        width: 1584px;
+        height: 396px;
+        background: #1F3A34;
+        color: #FAF8F3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        position: relative;
+      }
+      .wordmark {
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        font-size: 22px;
+        letter-spacing: 0.36em;
+        text-transform: uppercase;
+      }
+      .rule {
+        width: 64px;
+        height: 1px;
+        background: #FAF8F3;
+        opacity: 0.5;
+      }
+      .headline {
+        font-family: "Instrument Serif", Georgia, serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 56px;
+        line-height: 1;
+        letter-spacing: -0.015em;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="banner" id="banner">
+      <div class="wordmark">CASTWORKS</div>
+      <div class="rule"></div>
+      <div class="headline">The creators your database missed.</div>
+    </div>
+  </body>
+</html>
