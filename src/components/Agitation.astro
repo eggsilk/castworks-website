@@ -1,110 +1,530 @@
 ---
-// Section 2 — Agitation
-// "You've already tried this" — names the two broken options (databases + agencies)
-// that the buyer has already attempted. Direct-address, diagnostic tone.
+// Section 2 — Service Overview
+// Brief explanation of what we deliver + a stacked carousel of tear-sheet mocks
+// (5 creators from a hypothetical curated pipeline). Click, scroll, or arrow-key
+// to flip through. Mercury-style two-column layout: copy left, deliverable right.
+// (File still named Agitation.astro from prior site iteration; will rename
+//  after copy is locked.)
+
+interface TearSheet {
+  name: string;
+  handle: string;
+  numLabel: string;
+  audience: [string, string];
+  overlap: string;
+  engagement: string;
+  content: string;
+  commercial: string;
+  rate: [string, string];
+  note: string;
+}
+
+const tearSheets: TearSheet[] = [
+  {
+    name: "Maya Linde",
+    handle: "@mayalinde · YouTube · Substack",
+    numLabel: "03 / 09",
+    audience: ["142K subscribers", "71% women, 28–42, US/UK/AU"],
+    overlap: "87% with your category",
+    engagement: "8.4% — verified organic",
+    content: "Essays · slow living · design",
+    commercial: "Veridian · Hark · Loam Co.",
+    rate: ["$4.5K – $6.5K", "60–90s integration"],
+    note: "Briefed Apr 22. Aligned on category fit. Awaiting your go.",
+  },
+  {
+    name: "Jordan Park",
+    handle: "@jordanparklab · YouTube",
+    numLabel: "06 / 09",
+    audience: ["318K subscribers", "64% men, 24–38, US/UK/CA"],
+    overlap: "79% with your category",
+    engagement: "6.1% — verified organic",
+    content: "Habit science · longevity · gear",
+    commercial: "Northpoint · Hammer Athletic · Drift",
+    rate: ["$6.5K – $9K", "90s integration"],
+    note: "Open. Wants script latitude. Two-week lead.",
+  },
+  {
+    name: "Aisha Adesanya",
+    handle: "@aishaadesanya · Podcast · Instagram",
+    numLabel: "02 / 09",
+    audience: ["88K listeners avg", "Founders, 32–48, US-heavy"],
+    overlap: "92% with your category",
+    engagement: "11.2% — engaged community",
+    content: "DTC operators · brand-building · ops",
+    commercial: "Marlowe · Saplings · Brushset",
+    rate: ["$3.8K – $5K", "Mid-roll, 90s"],
+    note: "Ready. Prefers operator-led narratives. Apr 30 slot.",
+  },
+  {
+    name: "Kelvin Roe",
+    handle: "@kelvinroe.kitchen · YouTube · TikTok",
+    numLabel: "08 / 09",
+    audience: ["412K subscribers", "53/47 W/M, 28–55, US/UK"],
+    overlap: "81% with your category",
+    engagement: "7.6% — verified organic",
+    content: "Culinary technique · wine · regional",
+    commercial: "Cobble Lane · Field & Co. · Roma",
+    rate: ["$7K – $10K", "60s integration"],
+    note: "Interested in long-term. Confirmed for May.",
+  },
+  {
+    name: "Soren Bach",
+    handle: "@sorenbach · YouTube · Newsletter",
+    numLabel: "05 / 09",
+    audience: ["196K subscribers", "58% men, 26–44, EU/US"],
+    overlap: "89% with your category",
+    engagement: "9.3% — verified organic",
+    content: "Design crit · architecture · industrial",
+    commercial: "Maek · Frame Studio · Tertia",
+    rate: ["$5K – $7K", "90s integration"],
+    note: "Selective. Said yes after preview. Ready.",
+  },
+];
 ---
 
 <section
-  id="agitation"
-  class="py-32 md:py-40 px-6 md:px-10 lg:px-16"
+  id="overview"
+  class="py-32 md:py-44 px-6 md:px-10 lg:px-16"
   style="background: var(--color-bg);"
 >
   <div class="max-w-6xl mx-auto">
-    <!-- Section heading -->
-    <h2
-      data-reveal
-      class="font-serif leading-[1.02] tracking-tight max-w-3xl"
-      style="
-        color: var(--color-ink);
-        font-size: clamp(2rem, 5.2vw, 4.25rem);
-      "
-    >
-      You've already <em style="font-style: italic;">tried</em> this.
-    </h2>
-
-    <!-- Intro lede -->
-    <p
-      data-reveal
-      data-reveal-delay="1"
-      class="mt-10 md:mt-12 max-w-2xl text-lg md:text-xl leading-relaxed"
-      style="color: var(--color-ink-muted);"
-    >
-      Most small-to-mid-sized companies doing creator marketing today face two options.
-      Both are broken.
-    </p>
-
-    <!-- Two-column breakdown -->
     <div
-      class="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-0"
+      class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-start"
     >
-      <!-- Column 1: Databases -->
+      <!-- Left column: copy slot (placeholders, locked next) -->
+      <div>
+        <h2
+          data-reveal
+          class="font-serif leading-[1.02] tracking-tight"
+          style="
+            color: var(--color-ink);
+            font-size: clamp(2rem, 5.2vw, 4.25rem);
+          "
+        >
+          Curated creator pipelines, warmed up before delivery.
+        </h2>
+
+        <p
+          data-reveal
+          data-reveal-delay="1"
+          class="mt-10 md:mt-14 max-w-md text-lg md:text-xl leading-relaxed"
+          style="color: var(--color-ink-muted);"
+        >
+          We build a pipeline for each brief. Every creator on it is vetted,
+          contacted, and confirmed interested before the pipeline reaches you —
+          so you start where the deal-making begins.
+        </p>
+      </div>
+
+      <!-- Right column: tear-sheet stack carousel -->
       <div
         data-reveal
         data-reveal-delay="2"
-        class="md:pr-10 lg:pr-16 md:border-r"
-        style="border-color: var(--color-rule);"
+        class="md:pt-4 lg:pt-8 flex flex-col items-center"
       >
-        <h3
-          class="font-serif leading-[1.08] tracking-tight"
-          style="
-            color: var(--color-ink);
-            font-size: clamp(1.625rem, 2.8vw, 2.25rem);
-          "
+        <div
+          id="tearSheetStack"
+          class="tear-sheet-stack"
+          tabindex="0"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Sample tear sheets — click or scroll to flip"
         >
-          Databases ask you to be your own agency.
-        </h3>
-        <p
-          class="mt-6 md:mt-8 text-base md:text-lg leading-relaxed"
-          style="color: var(--color-ink-muted);"
-        >
-          Creator databases sell you a filtered list and expect you to do the rest:
-          pitch every creator, qualify the fit, negotiate the deal, coordinate the
-          placement, measure the outcome. What you get is a lead list, not a campaign.
-          Every hour of filtering is an hour you don't have.
-        </p>
-      </div>
+          {
+            tearSheets.map((sheet, i) => (
+              <article
+                class="tear-sheet"
+                data-index={i}
+                aria-label={`Tear sheet ${i + 1} of ${tearSheets.length}: ${sheet.name}`}
+              >
+                {/* Top label row */}
+                <div class="flex justify-between items-baseline">
+                  <span
+                    class="text-[10px] uppercase tracking-[0.22em]"
+                    style="color: var(--color-ink-subtle);"
+                  >
+                    Tear sheet
+                  </span>
+                  <span
+                    class="text-[10px] uppercase tracking-[0.22em]"
+                    style="color: var(--color-ink-subtle);"
+                  >
+                    {sheet.numLabel}
+                  </span>
+                </div>
 
-      <!-- Column 2: Agencies -->
-      <div
-        data-reveal
-        data-reveal-delay="3"
-        class="md:pl-10 lg:pl-16"
-      >
-        <h3
-          class="font-serif leading-[1.08] tracking-tight"
-          style="
-            color: var(--color-ink);
-            font-size: clamp(1.625rem, 2.8vw, 2.25rem);
-          "
-        >
-          Agencies ask you to pay like you're an enterprise.
-        </h3>
-        <p
-          class="mt-6 md:mt-8 text-base md:text-lg leading-relaxed"
-          style="color: var(--color-ink-muted);"
-        >
-          Traditional creator marketing agencies run on retainers sized for
-          eight-figure marketing budgets. If yours is smaller, you're either priced
-          out — or treated as a secondary account while the agency's real clients
-          get the attention. The retainer gets paid whether the campaign converts
-          or not.
-        </p>
+                {/* Name + handle */}
+                <div class="mt-6">
+                  <h3
+                    class="font-serif leading-tight"
+                    style="
+                      color: var(--color-ink);
+                      font-size: 1.875rem;
+                      letter-spacing: -0.01em;
+                    "
+                  >
+                    {sheet.name}
+                  </h3>
+                  <p
+                    class="mt-1 text-sm"
+                    style="color: var(--color-ink-muted);"
+                  >
+                    {sheet.handle}
+                  </p>
+                </div>
+
+                {/* Hairline */}
+                <hr
+                  class="mt-6 border-0"
+                  style="height: 1px; background: var(--color-rule);"
+                />
+
+                {/* Data grid */}
+                <dl class="mt-6 space-y-5 text-sm">
+                  <div class="grid grid-cols-[120px_1fr] gap-4">
+                    <dt
+                      class="uppercase tracking-[0.18em] text-[10px] pt-[3px]"
+                      style="color: var(--color-ink-subtle);"
+                    >
+                      Audience
+                    </dt>
+                    <dd style="color: var(--color-ink);">
+                      {sheet.audience[0]}
+                      <br />
+                      <span style="color: var(--color-ink-muted);">
+                        {sheet.audience[1]}
+                      </span>
+                    </dd>
+                  </div>
+
+                  <div class="grid grid-cols-[120px_1fr] gap-4">
+                    <dt
+                      class="uppercase tracking-[0.18em] text-[10px] pt-[3px]"
+                      style="color: var(--color-ink-subtle);"
+                    >
+                      Overlap
+                    </dt>
+                    <dd style="color: var(--color-ink);">{sheet.overlap}</dd>
+                  </div>
+
+                  <div class="grid grid-cols-[120px_1fr] gap-4">
+                    <dt
+                      class="uppercase tracking-[0.18em] text-[10px] pt-[3px]"
+                      style="color: var(--color-ink-subtle);"
+                    >
+                      Engagement
+                    </dt>
+                    <dd style="color: var(--color-ink);">{sheet.engagement}</dd>
+                  </div>
+
+                  <div class="grid grid-cols-[120px_1fr] gap-4">
+                    <dt
+                      class="uppercase tracking-[0.18em] text-[10px] pt-[3px]"
+                      style="color: var(--color-ink-subtle);"
+                    >
+                      Content
+                    </dt>
+                    <dd style="color: var(--color-ink);">{sheet.content}</dd>
+                  </div>
+
+                  <div class="grid grid-cols-[120px_1fr] gap-4">
+                    <dt
+                      class="uppercase tracking-[0.18em] text-[10px] pt-[3px]"
+                      style="color: var(--color-ink-subtle);"
+                    >
+                      Commercial
+                    </dt>
+                    <dd style="color: var(--color-ink);">
+                      {sheet.commercial}
+                    </dd>
+                  </div>
+
+                  <div class="grid grid-cols-[120px_1fr] gap-4">
+                    <dt
+                      class="uppercase tracking-[0.18em] text-[10px] pt-[3px]"
+                      style="color: var(--color-ink-subtle);"
+                    >
+                      Rate
+                    </dt>
+                    <dd style="color: var(--color-ink);">
+                      {sheet.rate[0]}
+                      <br />
+                      <span style="color: var(--color-ink-muted);">
+                        {sheet.rate[1]}
+                      </span>
+                    </dd>
+                  </div>
+                </dl>
+
+                {/* Hairline */}
+                <hr
+                  class="mt-7 border-0"
+                  style="height: 1px; background: var(--color-rule);"
+                />
+
+                {/* Status + note */}
+                <div class="mt-5 flex items-center gap-2">
+                  <span
+                    class="inline-block w-2 h-2 rounded-full"
+                    style="background: var(--color-accent);"
+                  />
+                  <span
+                    class="text-[11px] uppercase tracking-[0.2em] font-medium"
+                    style="color: var(--color-accent);"
+                  >
+                    Warmed up — interested
+                  </span>
+                </div>
+                <p
+                  class="mt-3 text-sm font-serif italic leading-snug"
+                  style="color: var(--color-ink-muted);"
+                >
+                  &ldquo;{sheet.note}&rdquo;
+                </p>
+              </article>
+            ))
+          }
+        </div>
+
+        {/* Caption + position indicator, flanked by prev/next chevrons */}
+        <div class="mt-8 flex items-center justify-center gap-4">
+          <button
+            type="button"
+            id="stackPrev"
+            aria-label="Previous tear sheet"
+            class="tear-sheet-nav"
+          >
+            <svg
+              viewBox="0 0 8 12"
+              width="10"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="6 1 1.5 6 6 11" />
+            </svg>
+          </button>
+
+          <div
+            class="text-xs uppercase tracking-[0.22em] flex items-center gap-3"
+            style="color: var(--color-ink-subtle);"
+          >
+            <span>Sample tear sheet</span>
+            <span style="color: var(--color-rule);">·</span>
+            <span
+              style="color: var(--color-ink-muted); font-variant-numeric: tabular-nums;"
+            >
+              <span id="stackPosition">01 / 05</span>
+            </span>
+          </div>
+
+          <button
+            type="button"
+            id="stackNext"
+            aria-label="Next tear sheet"
+            class="tear-sheet-nav"
+          >
+            <svg
+              viewBox="0 0 8 12"
+              width="10"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="2 1 6.5 6 2 11" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
-
-    <!-- Closing line — serif italic, reads as editorial aside -->
-    <p
-      data-reveal
-      data-reveal-delay="4"
-      class="mt-20 md:mt-28 max-w-2xl font-serif leading-snug"
-      style="
-        color: var(--color-ink-subtle);
-        font-style: italic;
-        font-size: clamp(1.25rem, 1.75vw, 1.625rem);
-      "
-    >
-      Most companies in the middle run sporadic one-off campaigns, hire a freelancer,
-      or quietly give up on the channel. None of it compounds.
-    </p>
   </div>
 </section>
+
+<style>
+  .tear-sheet-stack {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    min-height: clamp(580px, 64vh, 660px);
+    cursor: pointer;
+    user-select: none;
+    margin: 0 auto;
+    outline: none;
+  }
+
+  .tear-sheet-stack:focus-visible {
+    box-shadow: 0 0 0 2px var(--color-accent);
+    border-radius: 4px;
+  }
+
+  .tear-sheet {
+    position: absolute;
+    inset: 0;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-rule);
+    border-radius: 2px;
+    box-shadow: 0 2px 24px -8px rgba(20, 20, 20, 0.18);
+    padding: 2rem 2rem 1.75rem;
+    transition:
+      transform 380ms cubic-bezier(0.25, 1, 0.5, 1),
+      opacity 380ms cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform, opacity;
+    transform-origin: center top;
+  }
+
+  .tear-sheet[data-state="active"] {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    z-index: 10;
+  }
+
+  .tear-sheet[data-state="next-1"] {
+    transform: translateY(14px) scale(0.985);
+    opacity: 0.6;
+    z-index: 9;
+    pointer-events: none;
+  }
+
+  .tear-sheet[data-state="next-2"] {
+    transform: translateY(26px) scale(0.97);
+    opacity: 0.3;
+    z-index: 8;
+    pointer-events: none;
+  }
+
+  .tear-sheet[data-state="hidden-back"] {
+    transform: translateY(36px) scale(0.95);
+    opacity: 0;
+    z-index: 7;
+    pointer-events: none;
+  }
+
+  .tear-sheet[data-state="gone"] {
+    transform: translateY(-70px) scale(0.95);
+    opacity: 0;
+    z-index: 11;
+    pointer-events: none;
+  }
+
+  .tear-sheet-nav {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    color: var(--color-ink-subtle);
+    cursor: pointer;
+    transition: color 200ms ease;
+    border-radius: 2px;
+    padding: 0;
+  }
+
+  .tear-sheet-nav:hover {
+    color: var(--color-ink);
+  }
+
+  .tear-sheet-nav:focus-visible {
+    outline: 1px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+</style>
+
+<script>
+  function initTearSheetStack() {
+    const stack = document.getElementById("tearSheetStack");
+    if (!stack) return;
+    const cards = Array.from(
+      stack.querySelectorAll<HTMLElement>(".tear-sheet")
+    );
+    const positionEl = document.getElementById("stackPosition");
+    if (cards.length === 0) return;
+
+    const total = cards.length;
+    let currentIndex = 0;
+
+    function applyStates() {
+      cards.forEach((card, i) => {
+        const offset = (i - currentIndex + total) % total;
+        let state: string;
+        if (offset === 0) state = "active";
+        else if (offset === 1) state = "next-1";
+        else if (offset === 2) state = "next-2";
+        else if (offset === total - 1) state = "gone";
+        else state = "hidden-back";
+        card.dataset.state = state;
+      });
+      if (positionEl) {
+        const pad = (n: number) => String(n).padStart(2, "0");
+        positionEl.textContent = `${pad(currentIndex + 1)} / ${pad(total)}`;
+      }
+    }
+
+    function advance() {
+      currentIndex = (currentIndex + 1) % total;
+      applyStates();
+    }
+    function reverse() {
+      currentIndex = (currentIndex - 1 + total) % total;
+      applyStates();
+    }
+
+    // Click anywhere on the stack to advance
+    stack.addEventListener("click", advance);
+
+    // Prev/next chevron buttons
+    const prevBtn = document.getElementById("stackPrev");
+    const nextBtn = document.getElementById("stackNext");
+    prevBtn?.addEventListener("click", reverse);
+    nextBtn?.addEventListener("click", advance);
+
+    // Wheel — debounced, prevents page scroll while over the stack
+    let lastWheelTime = 0;
+    stack.addEventListener(
+      "wheel",
+      (e) => {
+        e.preventDefault();
+        const now = performance.now();
+        if (now - lastWheelTime < 380) return;
+        lastWheelTime = now;
+        if (e.deltaY > 0 || e.deltaX > 0) advance();
+        else if (e.deltaY < 0 || e.deltaX < 0) reverse();
+      },
+      { passive: false }
+    );
+
+    // Keyboard — arrow keys + space when stack is focused
+    stack.addEventListener("keydown", (e) => {
+      if (
+        e.key === "ArrowDown" ||
+        e.key === "ArrowRight" ||
+        e.key === " " ||
+        e.key === "Enter"
+      ) {
+        e.preventDefault();
+        advance();
+      } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        reverse();
+      }
+    });
+
+    applyStates();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initTearSheetStack);
+  } else {
+    initTearSheetStack();
+  }
+</script>
