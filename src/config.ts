@@ -7,6 +7,6 @@ export const FORMSPREE_ENDPOINT = "https://formspree.io/f/xkokeeen";
 
 export const SITE_URL = "https://castworks.co";
 
-export const TAGLINE = "The risk-free infrastructure for creator marketing.";
+export const TAGLINE = "The creators your database missed.";
 export const META_DESCRIPTION =
-  "Full-service influencer marketing for small-to-mid-sized companies. Strategy, discovery, and delivery — on a pure commission model. No retainers.";
+  "A curated creator pipeline. Sourced, vetted, warmed up. Built for small-to-mid-sized DTC brands.";
