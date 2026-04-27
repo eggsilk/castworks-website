@@ -1,0 +1,191 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { CONTACT_EMAIL, COMPANY_NAME } from "../config";
+
+const lastUpdated = "27 April 2026";
+---
+
+<Layout title={`Privacy — ${COMPANY_NAME}`} path="/privacy">
+  <Nav />
+
+  <main
+    class="px-6 md:px-10 lg:px-16 pt-32 md:pt-40 pb-24 md:pb-32"
+    style="background: var(--color-bg);"
+  >
+    <article class="max-w-2xl mx-auto">
+      <h1
+        class="font-serif leading-[1.02] tracking-tight"
+        style="
+          color: var(--color-ink);
+          font-size: clamp(2.25rem, 5vw, 3.75rem);
+        "
+      >
+        A note on data and privacy.
+      </h1>
+
+      <p
+        class="mt-6 md:mt-8 text-base md:text-lg leading-relaxed"
+        style="color: var(--color-ink-muted);"
+      >
+        We keep this short and direct. {COMPANY_NAME} collects very little.
+        What we do collect, we use carefully.
+      </p>
+
+      <p
+        class="mt-3 text-sm"
+        style="color: var(--color-ink-subtle);"
+      >
+        Last updated: {lastUpdated}.
+      </p>
+
+      <div class="mt-14 space-y-12 text-base md:text-lg leading-relaxed" style="color: var(--color-ink);">
+
+        <section>
+          <h2
+            class="font-serif tracking-tight"
+            style="color: var(--color-ink); font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.15;"
+          >
+            What we collect
+          </h2>
+          <p class="mt-4" style="color: var(--color-ink-muted);">
+            When you submit a brief through the form on this site, we collect
+            what you give us — typically your name, your email, your company,
+            and the details of your campaign brief. Nothing else. We do not run
+            analytics on this site, we do not set advertising cookies, and we
+            do not track you across the web.
+          </p>
+        </section>
+
+        <section>
+          <h2
+            class="font-serif tracking-tight"
+            style="color: var(--color-ink); font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.15;"
+          >
+            Where it goes
+          </h2>
+          <p class="mt-4" style="color: var(--color-ink-muted);">
+            Three services touch your data, all based in the United States:
+          </p>
+          <ul class="mt-5 space-y-4 list-disc pl-5" style="color: var(--color-ink-muted);">
+            <li>
+              <strong style="color: var(--color-ink);">Formspree</strong> receives
+              the intake form and forwards the contents to our inbox. Their
+              policy lives at
+              <a
+                href="https://formspree.io/legal/privacy-policy"
+                class="underline underline-offset-2"
+                style="color: var(--color-accent);"
+              >formspree.io/legal/privacy-policy</a>.
+            </li>
+            <li>
+              <strong style="color: var(--color-ink);">Google Workspace</strong>
+              hosts our email, including any reply thread that grows from your
+              brief.
+            </li>
+            <li>
+              <strong style="color: var(--color-ink);">Google Fonts</strong> loads
+              two typefaces from Google's CDN when you visit, which briefly
+              exposes your IP address to Google. We are aware of the concerns
+              around this and plan to self-host the fonts in a future deploy.
+            </li>
+          </ul>
+          <p class="mt-5" style="color: var(--color-ink-muted);">
+            We do not share your data with anyone outside these processors.
+            We do not sell it. We do not pass it to creators unless you have
+            explicitly asked us to.
+          </p>
+        </section>
+
+        <section>
+          <h2
+            class="font-serif tracking-tight"
+            style="color: var(--color-ink); font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.15;"
+          >
+            Why we are allowed to hold it
+          </h2>
+          <p class="mt-4" style="color: var(--color-ink-muted);">
+            Under GDPR, we rely on two legal bases. When you send us a brief,
+            we process your data to take steps toward a possible contract
+            (Art. 6(1)(b) GDPR). For ongoing communication and record-keeping
+            after that, we rely on our legitimate interest in running the
+            business (Art. 6(1)(f) GDPR), balanced against your right to
+            object at any time.
+          </p>
+        </section>
+
+        <section>
+          <h2
+            class="font-serif tracking-tight"
+            style="color: var(--color-ink); font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.15;"
+          >
+            How long we keep it
+          </h2>
+          <p class="mt-4" style="color: var(--color-ink-muted);">
+            If we work together, we hold your data for the length of the
+            engagement plus the period required by applicable tax and
+            contracting law (typically up to seven years for invoicing
+            records).
+          </p>
+          <p class="mt-4" style="color: var(--color-ink-muted);">
+            If we do not work together — say you submit a brief and we never
+            proceed — we hold what you sent for twelve months and then delete
+            it. The window exists so that if you come back later, we still
+            have the context.
+          </p>
+        </section>
+
+        <section>
+          <h2
+            class="font-serif tracking-tight"
+            style="color: var(--color-ink); font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.15;"
+          >
+            Your rights
+          </h2>
+          <p class="mt-4" style="color: var(--color-ink-muted);">
+            Under GDPR you can ask us to:
+          </p>
+          <ul class="mt-4 space-y-2 list-disc pl-5" style="color: var(--color-ink-muted);">
+            <li>Show you what we have on you</li>
+            <li>Correct anything that is wrong</li>
+            <li>Delete it</li>
+            <li>Export it so you can take it elsewhere</li>
+            <li>Stop processing it</li>
+          </ul>
+          <p class="mt-5" style="color: var(--color-ink-muted);">
+            Send any of these requests to
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              class="underline underline-offset-2"
+              style="color: var(--color-accent);"
+            >{CONTACT_EMAIL}</a>. We act on them within thirty days. If you
+            think we have handled your data poorly, you can also lodge a
+            complaint with your local supervisory authority.
+          </p>
+        </section>
+
+        <section>
+          <h2
+            class="font-serif tracking-tight"
+            style="color: var(--color-ink); font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.15;"
+          >
+            Contact
+          </h2>
+          <p class="mt-4" style="color: var(--color-ink-muted);">
+            {COMPANY_NAME} is operated from the United States. For any privacy
+            question, write to
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              class="underline underline-offset-2"
+              style="color: var(--color-accent);"
+            >{CONTACT_EMAIL}</a>.
+          </p>
+        </section>
+
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
