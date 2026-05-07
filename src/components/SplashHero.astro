@@ -1,163 +1,484 @@
 ---
-// Editorial splash hero — single screen.
-// Left: wordmark (in SiteNav) + headline + sub + single CTA.
-// Right: "creator universe → shortlist" constellation visual. Atmospheric
-// proof of the curation move (many considered, few selected) without claiming
-// brand names or volume the company doesn't have yet.
+// Editorial splash hero — full-bleed canvas constellation with the hero copy
+// centered on top.
+//
+// The canvas renders a chaotic universe of dots that the cursor's selection
+// circle captures into small constellations. Each capture forms, holds (with
+// slow drift), then disperses outward from its centroid. Multiple cycles can
+// run simultaneously. The metaphor: in a chaotic system, capturing a small
+// constellation.
+//
+// The hero copy layer has pointer-events disabled so the cursor reaches the
+// canvas through the text — captures form even behind the headline. The CTA
+// opts back in so it stays clickable.
 import { HOME_PATH } from "../config";
 ---
 
-<section
-  class="relative min-h-screen flex flex-col"
-  style="background: var(--color-bg);"
->
-  <div
-    class="flex-1 flex items-center px-6 md:px-10 lg:px-16 pt-32 md:pt-36 pb-16"
-  >
-    <div class="w-full max-w-6xl mx-auto">
-      <!-- Two-column on desktop, stacked on mobile (headline first) -->
-      <div
-        class="grid grid-cols-1 md:grid-cols-[1.15fr_1fr] gap-12 md:gap-16 lg:gap-24 items-center"
+<section class="splash-section">
+  <canvas
+    data-constellation
+    class="constellation-canvas"
+    aria-label="Creator universe"
+  ></canvas>
+
+  <div class="splash-content">
+    <div class="splash-content-inner">
+      <h1
+        class="hero-animate font-serif leading-[0.96] tracking-tight"
+        style="color: var(--color-ink); font-size: clamp(2.5rem, 6vw, 5.5rem);"
       >
-        <!-- Left: copy -->
-        <div>
-          <h1
-            class="hero-animate font-serif leading-[0.96] tracking-tight"
-            style="
-              color: var(--color-ink);
-              font-size: clamp(2.5rem, 6vw, 5.5rem);
-            "
-          >
-            Creator marketing, <em class="italic">hand-built</em>.
-          </h1>
+        Creator marketing, <em class="italic">hand-built</em>.
+      </h1>
 
-          <div
-            class="hero-animate hero-delay-1 mt-8 md:mt-10 max-w-xl"
-            style="color: var(--color-ink-muted);"
-          >
-            <p class="text-lg md:text-xl leading-relaxed">
-              We build a creator pipeline by hand. One brief at a time.
-            </p>
-          </div>
+      <p
+        class="hero-animate hero-delay-1 splash-sub"
+        style="color: var(--color-ink-muted);"
+      >
+        We build a creator pipeline by hand. One brief at a time.
+      </p>
 
-          <div
-            class="hero-animate hero-delay-2 mt-10 md:mt-14 flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-8"
-          >
-            <a
-              href={HOME_PATH}
-              class="inline-flex items-center gap-2 text-base"
-              style="color: var(--color-accent); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px;"
-            >
-              How we work
-              <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Right: creator universe constellation. Mobile: appears below copy. -->
-        <div
-          class="hero-animate hero-delay-3 flex flex-col items-center md:items-end"
+      <div class="hero-animate hero-delay-2 splash-cta">
+        <a
+          href={HOME_PATH}
+          class="inline-flex items-center gap-2 text-base"
+          style="color: var(--color-accent); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px;"
         >
-          <svg
-            viewBox="0 0 500 500"
-            class="w-full max-w-[480px] h-auto"
-            role="img"
-            aria-label="Creator universe visualization: many creators narrowed to a shortlist."
-          >
-            <!-- Background: creator universe (muted dots) -->
-            <g style="fill: var(--color-ink-subtle); opacity: 0.42;">
-              <circle cx="40" cy="60" r="2" />
-              <circle cx="75" cy="130" r="1.8" />
-              <circle cx="30" cy="200" r="2" />
-              <circle cx="100" cy="70" r="1.6" />
-              <circle cx="140" cy="40" r="2" />
-              <circle cx="180" cy="110" r="1.8" />
-              <circle cx="220" cy="60" r="2" />
-              <circle cx="270" cy="40" r="1.6" />
-              <circle cx="340" cy="70" r="2" />
-              <circle cx="400" cy="50" r="1.8" />
-              <circle cx="460" cy="100" r="2" />
-              <circle cx="440" cy="40" r="1.6" />
-              <circle cx="70" cy="260" r="1.8" />
-              <circle cx="35" cy="330" r="2" />
-              <circle cx="60" cy="400" r="1.8" />
-              <circle cx="100" cy="360" r="2" />
-              <circle cx="150" cy="440" r="1.6" />
-              <circle cx="40" cy="470" r="2" />
-              <circle cx="180" cy="390" r="1.8" />
-              <circle cx="230" cy="420" r="2" />
-              <circle cx="200" cy="475" r="1.6" />
-              <circle cx="100" cy="465" r="1.8" />
-              <circle cx="395" cy="430" r="2" />
-              <circle cx="445" cy="380" r="1.8" />
-              <circle cx="472" cy="430" r="1.6" />
-              <circle cx="450" cy="290" r="2" />
-              <circle cx="470" cy="210" r="1.8" />
-              <circle cx="350" cy="50" r="1.6" />
-              <circle cx="460" cy="160" r="2" />
-              <circle cx="380" cy="190" r="1.8" />
-              <circle cx="418" cy="250" r="1.6" />
-              <circle cx="430" cy="340" r="2" />
-              <circle cx="350" cy="400" r="1.8" />
-              <circle cx="90" cy="210" r="1.6" />
-              <circle cx="30" cy="140" r="2" />
-              <circle cx="160" cy="200" r="1.8" />
-              <circle cx="250" cy="470" r="1.6" />
-              <circle cx="60" cy="280" r="1.8" />
-              <circle cx="190" cy="250" r="2" />
-              <circle cx="145" cy="290" r="1.6" />
-              <circle cx="125" cy="165" r="1.8" />
-              <circle cx="215" cy="155" r="1.6" />
-              <circle cx="255" cy="120" r="1.8" />
-            </g>
-
-            <!-- Dashed selection boundary -->
-            <circle
-              cx="315"
-              cy="265"
-              r="78"
-              fill="none"
-              style="stroke: var(--color-ink-subtle); stroke-width: 0.8; stroke-dasharray: 3 4; opacity: 0.55;"
-            />
-
-            <!-- Constellation lines connecting shortlist -->
-            <g style="stroke: var(--color-ink); stroke-width: 0.8; fill: none; opacity: 0.45;">
-              <line x1="270" y1="228" x2="308" y2="220" />
-              <line x1="308" y1="220" x2="350" y2="240" />
-              <line x1="308" y1="220" x2="295" y2="265" />
-              <line x1="295" y1="265" x2="335" y2="275" />
-              <line x1="335" y1="275" x2="365" y2="248" />
-              <line x1="295" y1="265" x2="315" y2="310" />
-              <line x1="315" y1="310" x2="355" y2="300" />
-              <line x1="270" y1="228" x2="295" y2="265" />
-            </g>
-
-            <!-- Foreground: shortlist (ink dots) -->
-            <g style="fill: var(--color-ink);">
-              <circle cx="270" cy="228" r="3.2" />
-              <circle cx="308" cy="220" r="3.4" />
-              <circle cx="350" cy="240" r="3.2" />
-              <circle cx="365" cy="248" r="2.8" />
-              <circle cx="295" cy="265" r="3.6" />
-              <circle cx="335" cy="275" r="3.2" />
-              <circle cx="315" cy="310" r="3" />
-              <circle cx="355" cy="300" r="2.8" />
-            </g>
-          </svg>
-
-          <div
-            class="mt-6 text-xs uppercase tracking-[0.22em] flex items-center gap-3"
-            style="color: var(--color-ink-subtle);"
-          >
-            <span>Creator universe</span>
-            <svg viewBox="0 0 24 8" width="24" height="8" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="0" y1="4" x2="20" y2="4" />
-              <polyline points="16 1 20 4 16 7" />
-            </svg>
-            <span>Your shortlist</span>
-          </div>
-        </div>
+          How we work
+          <span aria-hidden="true">&rarr;</span>
+        </a>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .splash-section {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background: var(--color-bg);
+  }
+
+  .constellation-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: transparent;
+    z-index: 0;
+    touch-action: pan-y;
+  }
+
+  .splash-content {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 1.5rem 4rem;
+    /* Pointer-events transparent so the cursor reaches the canvas anywhere
+       in the hero — the CTA below opts back in. */
+    pointer-events: none;
+  }
+
+  @media (min-width: 768px) {
+    .splash-content {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+      padding-top: 9rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .splash-content {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
+  .splash-content-inner {
+    max-width: 56rem;
+    text-align: center;
+  }
+
+  .splash-sub {
+    margin-top: 2rem;
+    font-size: 1.125rem;
+    line-height: 1.625;
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (min-width: 768px) {
+    .splash-sub {
+      margin-top: 2.5rem;
+      font-size: 1.25rem;
+    }
+  }
+
+  .splash-cta {
+    margin-top: 2.5rem;
+    pointer-events: auto;
+  }
+
+  @media (min-width: 768px) {
+    .splash-cta {
+      margin-top: 3.5rem;
+    }
+  }
+</style>
+
+<script>
+  // ─────────────────────────────────────────────────────────────────────────
+  // Constellation animation engine — capture-and-retain.
+  //
+  // Universe: ~220 dots drift via a low-amplitude flow field with a soft
+  // home-attractor. The cursor has no force on the universe.
+  //
+  // Capture: when ≥3 uncaptured dots are inside the selection circle (which
+  // follows the cursor with damping), those dots become a captured cycle.
+  // Each captured dot locks to its position at capture, brightens, grows.
+  // 2-nearest-neighbor edges connect the set into a constellation.
+  //
+  // Hold: captured dots drift slowly around their capture position (flow at
+  // 25% amplitude + gentle anchor attractor). The constellation breathes.
+  //
+  // Release: dots receive an outward velocity push from the constellation's
+  // centroid (with small jitter), then fade back to universe values while
+  // drifting outward via universe physics.
+  //
+  // No cooldown — the moment a cycle finishes, a new one can trigger if the
+  // circle still holds ≥3 uncaptured dots. Multiple cycles run concurrently.
+  // ─────────────────────────────────────────────────────────────────────────
+
+  interface Particle {
+    x: number;
+    y: number;
+    ox: number;
+    oy: number;
+    vx: number;
+    vy: number;
+    r: number;
+    capX: number;
+    capY: number;
+  }
+
+  interface CaptureCycle {
+    started: number;
+    holdEnd: number;
+    fullyReleasedAt: number;
+    particles: Particle[];
+    edges: Array<[number, number]>;
+    centroidX: number;
+    centroidY: number;
+    dispersed: boolean;
+  }
+
+  const UNIVERSE_DOT_COUNT      = 220;
+  const UNIVERSE_DOT_R_MIN      = 2.0;
+  const UNIVERSE_DOT_R_MAX      = 3.0;
+  const UNIVERSE_DOT_ALPHA      = 0.7;
+  const CAPTURED_DOT_R          = 4.5;
+  const CIRCLE_ALPHA            = 0.85;
+  const LINE_ALPHA              = 0.65;
+  const LINE_WIDTH              = 1.0;
+  const CIRCLE_RADIUS_PX        = 100;
+  const CAPTURE_DOT_THRESHOLD   = 3;
+  const CAPTURE_DOT_MAX         = 12;
+  const CAPTURE_TRANSITION_MS   = 400;
+  const HOLD_MS                 = 2000;
+  const RELEASE_MS              = 1500;
+  const DISPERSAL_SPEED         = 1.4;
+  const EDGE_MARGIN             = 36;
+
+  function initConstellation(canvas: HTMLCanvasElement) {
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const cssSize = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    const W = Math.round(cssSize.width || canvas.width || 1280);
+    const H = Math.round(cssSize.height || canvas.height || 800);
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width = W + "px";
+    canvas.style.height = H + "px";
+    ctx.scale(dpr, dpr);
+
+    const particles: Particle[] = [];
+    for (let i = 0; i < UNIVERSE_DOT_COUNT; i++) {
+      const x = EDGE_MARGIN + Math.random() * (W - EDGE_MARGIN * 2);
+      const y = EDGE_MARGIN + Math.random() * (H - EDGE_MARGIN * 2);
+      const r = UNIVERSE_DOT_R_MIN + Math.random() * (UNIVERSE_DOT_R_MAX - UNIVERSE_DOT_R_MIN);
+      particles.push({
+        x, y,
+        ox: x, oy: y,
+        vx: 0, vy: 0,
+        r,
+        capX: x,
+        capY: y,
+      });
+    }
+
+    const mouse = { x: -1, y: -1, inside: false };
+
+    const circle = {
+      x: W / 2,
+      y: H / 2,
+      tx: W / 2,
+      ty: H / 2,
+    };
+
+    let cycles: CaptureCycle[] = [];
+    const particleCycle = new Map<Particle, CaptureCycle>();
+
+    function dotsInCircleEligible(): Particle[] {
+      const r2 = CIRCLE_RADIUS_PX * CIRCLE_RADIUS_PX;
+      const matches: Array<{ p: Particle; d2: number }> = [];
+      for (const p of particles) {
+        if (particleCycle.has(p)) continue;
+        const dx = p.x - circle.x;
+        const dy = p.y - circle.y;
+        const d2 = dx * dx + dy * dy;
+        if (d2 <= r2) matches.push({ p, d2 });
+      }
+      if (matches.length <= CAPTURE_DOT_MAX) return matches.map((m) => m.p);
+      matches.sort((a, b) => a.d2 - b.d2);
+      return matches.slice(0, CAPTURE_DOT_MAX).map((m) => m.p);
+    }
+
+    function buildEdges(set: Particle[]): Array<[number, number]> {
+      const edgeSet = new Set<string>();
+      const edges: Array<[number, number]> = [];
+      for (let i = 0; i < set.length; i++) {
+        const dists = set
+          .map((q, j) => ({ j, d: (set[i].x - q.x) ** 2 + (set[i].y - q.y) ** 2 }))
+          .filter((e) => e.j !== i)
+          .sort((a, b) => a.d - b.d)
+          .slice(0, 2);
+        dists.forEach(({ j }) => {
+          const key = i < j ? `${i}-${j}` : `${j}-${i}`;
+          if (!edgeSet.has(key)) {
+            edgeSet.add(key);
+            edges.push([i, j]);
+          }
+        });
+      }
+      return edges;
+    }
+
+    function tryTriggerCapture(t: number) {
+      if (!mouse.inside) return;
+
+      const candidates = dotsInCircleEligible();
+      if (candidates.length < CAPTURE_DOT_THRESHOLD) return;
+
+      candidates.forEach((p) => {
+        p.capX = p.x;
+        p.capY = p.y;
+      });
+
+      const cx = candidates.reduce((s, p) => s + p.x, 0) / candidates.length;
+      const cy = candidates.reduce((s, p) => s + p.y, 0) / candidates.length;
+
+      const newCycle: CaptureCycle = {
+        started: t,
+        holdEnd: t + CAPTURE_TRANSITION_MS + HOLD_MS,
+        fullyReleasedAt: t + CAPTURE_TRANSITION_MS + HOLD_MS + RELEASE_MS,
+        particles: candidates,
+        edges: buildEdges(candidates),
+        centroidX: cx,
+        centroidY: cy,
+        dispersed: false,
+      };
+
+      candidates.forEach((p) => particleCycle.set(p, newCycle));
+      cycles.push(newCycle);
+    }
+
+    function disperseDueCycles(t: number) {
+      cycles.forEach((c) => {
+        if (c.dispersed) return;
+        if (t < c.holdEnd) return;
+        c.dispersed = true;
+        c.particles.forEach((p) => {
+          const dx = p.x - c.centroidX;
+          const dy = p.y - c.centroidY;
+          const len = Math.hypot(dx, dy) || 1;
+          const jitter = 0.18;
+          const nx = dx / len + (Math.random() - 0.5) * jitter;
+          const ny = dy / len + (Math.random() - 0.5) * jitter;
+          p.vx = nx * DISPERSAL_SPEED;
+          p.vy = ny * DISPERSAL_SPEED;
+        });
+      });
+    }
+
+    function reapFinishedCycles(t: number) {
+      cycles = cycles.filter((c) => {
+        if (t >= c.fullyReleasedAt) {
+          c.particles.forEach((p) => particleCycle.delete(p));
+          return false;
+        }
+        return true;
+      });
+    }
+
+    function renderStatic() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach((p) => {
+        ctx.fillStyle = `rgba(20, 20, 20, ${UNIVERSE_DOT_ALPHA})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    if (reduced) {
+      renderStatic();
+      return;
+    }
+
+    function cyclePhase(c: CaptureCycle, t: number) {
+      const elapsed = t - c.started;
+      if (elapsed < CAPTURE_TRANSITION_MS) {
+        const k = elapsed / CAPTURE_TRANSITION_MS;
+        return { lineAlpha: k, captureMix: k };
+      }
+      if (t < c.holdEnd) {
+        return { lineAlpha: 1, captureMix: 1 };
+      }
+      const k = (t - c.holdEnd) / RELEASE_MS;
+      return { lineAlpha: 1 - k, captureMix: 1 - k };
+    }
+
+    function frame(t: number) {
+      ctx.clearRect(0, 0, W, H);
+
+      tryTriggerCapture(t);
+      disperseDueCycles(t);
+      reapFinishedCycles(t);
+
+      particles.forEach((p) => {
+        const c = particleCycle.get(p);
+        const inHold = c && t < c.holdEnd;
+
+        if (inHold) {
+          const fx =
+            (Math.sin(p.x * 0.012 + t * 0.0004) * 0.10 +
+              Math.cos(p.y * 0.018 + t * 0.0003) * 0.05) *
+            0.25;
+          const fy =
+            (Math.cos(p.y * 0.012 + t * 0.0004) * 0.10 +
+              Math.sin(p.x * 0.018 + t * 0.0003) * 0.05) *
+            0.25;
+          const ax = (p.capX - p.x) * 0.003;
+          const ay = (p.capY - p.y) * 0.003;
+          p.vx = p.vx * 0.93 + fx + ax;
+          p.vy = p.vy * 0.93 + fy + ay;
+        } else {
+          const fx =
+            Math.sin(p.x * 0.012 + t * 0.0004) * 0.10 +
+            Math.cos(p.y * 0.018 + t * 0.0003) * 0.05;
+          const fy =
+            Math.cos(p.y * 0.012 + t * 0.0004) * 0.10 +
+            Math.sin(p.x * 0.018 + t * 0.0003) * 0.05;
+          const ax = (p.ox - p.x) * 0.0015;
+          const ay = (p.oy - p.y) * 0.0015;
+          p.vx = p.vx * 0.94 + fx + ax;
+          p.vy = p.vy * 0.94 + fy + ay;
+        }
+
+        const speed = Math.hypot(p.vx, p.vy);
+        const max = inHold ? 0.6 : 1.6;
+        if (speed > max) {
+          p.vx = (p.vx / speed) * max;
+          p.vy = (p.vy / speed) * max;
+        }
+
+        p.x += p.vx;
+        p.y += p.vy;
+      });
+
+      circle.tx = mouse.inside ? mouse.x : W / 2;
+      circle.ty = mouse.inside ? mouse.y : H / 2;
+      circle.x += (circle.tx - circle.x) * 0.10;
+      circle.y += (circle.ty - circle.y) * 0.10;
+
+      ctx.strokeStyle = `rgba(20, 20, 20, ${CIRCLE_ALPHA})`;
+      ctx.lineWidth = 1.0;
+      ctx.setLineDash([3, 4]);
+      ctx.beginPath();
+      ctx.arc(circle.x, circle.y, CIRCLE_RADIUS_PX, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      particles.forEach((p) => {
+        if (particleCycle.has(p)) return;
+        ctx.fillStyle = `rgba(20, 20, 20, ${UNIVERSE_DOT_ALPHA})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      cycles.forEach((c) => {
+        const phase = cyclePhase(c, t);
+        if (phase.lineAlpha > 0) {
+          ctx.strokeStyle = `rgba(20, 20, 20, ${LINE_ALPHA * phase.lineAlpha})`;
+          ctx.lineWidth = LINE_WIDTH;
+          c.edges.forEach(([a, b]) => {
+            const pa = c.particles[a];
+            const pb = c.particles[b];
+            ctx.beginPath();
+            ctx.moveTo(pa.x, pa.y);
+            ctx.lineTo(pb.x, pb.y);
+            ctx.stroke();
+          });
+        }
+        c.particles.forEach((p) => {
+          const alpha = UNIVERSE_DOT_ALPHA + (1 - UNIVERSE_DOT_ALPHA) * phase.captureMix;
+          const radius = p.r + (CAPTURED_DOT_R - p.r) * phase.captureMix;
+          ctx.fillStyle = `rgba(20, 20, 20, ${alpha})`;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      });
+
+      requestAnimationFrame(frame);
+    }
+
+    // Synchronous initial paint — canvas is never blank in environments that
+    // throttle requestAnimationFrame.
+    frame(performance.now());
+
+    canvas.addEventListener("mouseenter", () => {
+      mouse.inside = true;
+    });
+    canvas.addEventListener("mouseleave", () => {
+      mouse.inside = false;
+    });
+    canvas.addEventListener("mousemove", (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = (e.clientX - rect.left) * (W / rect.width);
+      mouse.y = (e.clientY - rect.top) * (H / rect.height);
+    });
+  }
+
+  function bootAll() {
+    document
+      .querySelectorAll<HTMLCanvasElement>("canvas[data-constellation]")
+      .forEach(initConstellation);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bootAll);
+  } else {
+    bootAll();
+  }
+</script>
