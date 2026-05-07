@@ -1,0 +1,100 @@
+---
+// Standards section — "What earns a creator a spot."
+// Editorial layout: numbered list, hairline rules between items, no boxes.
+
+interface Criterion {
+  num: string;
+  heading: string;
+  body: string;
+}
+
+const criteria: Criterion[] = [
+  {
+    num: "01",
+    heading: "Engagement quality, not vanity counts.",
+    body: "Engagement quality over follower count. A 40K creator with a real audience beats a 400K creator with a passive one.",
+  },
+  {
+    num: "02",
+    heading: "Audience overlap with your brand.",
+    body: "Genuine overlap with who you want to reach — demographics, geography, content adjacency — not adjacent-on-paper.",
+  },
+  {
+    num: "03",
+    heading: "Commercial track record.",
+    body: "How past brand work landed — disclosure quality, audience reception, follow-through. Sponsorships as craft, not filler.",
+  },
+  {
+    num: "04",
+    heading: "Content fit.",
+    body: "Your brand has to belong in the creator's world. We read recent work to check whether it lands naturally or feels grafted on.",
+  },
+  {
+    num: "05",
+    heading: "Rate-to-reach calibration.",
+    body: "Working rate ballparked against engaged-reach, not subscriber count. Pricing has to match real value to your brief.",
+  },
+];
+---
+
+<section
+  id="standards"
+  class="py-32 md:py-44 px-6 md:px-10 lg:px-16"
+  style="background: var(--color-bg);"
+>
+  <div class="max-w-6xl mx-auto">
+    <h2
+      data-reveal
+      class="font-serif leading-[1.02] tracking-tight max-w-3xl"
+      style="
+        color: var(--color-ink);
+        font-size: clamp(2rem, 5.2vw, 4.25rem);
+      "
+    >
+      What earns a creator a spot.
+    </h2>
+
+    <p
+      data-reveal
+      data-reveal-delay="1"
+      class="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-relaxed"
+      style="color: var(--color-ink-muted);"
+    >
+      Five criteria, applied to every creator before a name reaches a brief.
+    </p>
+
+    <ol class="mt-16 md:mt-20" style="list-style: none;">
+      {
+        criteria.map((c, i) => (
+          <li
+            data-reveal
+            data-reveal-delay={Math.min(i + 1, 5)}
+            class="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-6 md:gap-12 py-10 md:py-12 border-t"
+            style={`border-color: var(--color-rule); ${i === criteria.length - 1 ? "border-bottom: 1px solid var(--color-rule);" : ""}`}
+          >
+            <div
+              class="text-xs uppercase tracking-[0.22em]"
+              style="color: var(--color-ink-subtle);"
+            >
+              {c.num}
+            </div>
+            <div>
+              <h3
+                class="font-serif"
+                style="color: var(--color-ink); font-size: clamp(1.375rem, 2.2vw, 1.75rem); line-height: 1.2;"
+              >
+                {c.heading}
+              </h3>
+              <p
+                class="mt-4 max-w-2xl text-base md:text-lg leading-relaxed"
+                style="color: var(--color-ink-muted);"
+              >
+                {c.body}
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

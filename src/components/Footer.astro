@@ -3,14 +3,13 @@
 //
 // Design intent: hairline rule above (visual close), generous vertical padding
 // to let the page breathe out, small left-aligned identity on the left,
-// contact + nav anchors on the right. No social links yet (no LinkedIn /
-// Twitter pages live). Same warm bg as the page — no dark-mode footer, no
-// SaaS treatment.
+// contact + nav anchors on the right. No social links yet.
 import {
   COMPANY_NAME,
   CONTACT_EMAIL,
-  APPLY_ANCHOR,
-  HOW_IT_WORKS_ANCHOR,
+  BRIEF_PATH,
+  HOW_WE_WORK_PATH,
+  ABOUT_PATH,
 } from "../config";
 
 const year = new Date().getFullYear();
@@ -33,28 +32,21 @@ const year = new Date().getFullYear();
       </div>
     </div>
 
-    <!-- Links -->
+    <!-- Links: nav group (How we work · About · Privacy)  +  contact group (email · Submit a brief) -->
     <nav
-      class="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 text-sm"
+      class="flex flex-col md:flex-row md:items-center gap-4 md:gap-12 text-sm"
       style="color: var(--color-ink-muted);"
       aria-label="Footer"
     >
-      <a
-        href={HOW_IT_WORKS_ANCHOR}
-        class="footer-link"
-      >How it works</a>
-      <a
-        href={APPLY_ANCHOR}
-        class="footer-link"
-      >Submit a brief</a>
-      <a
-        href={`mailto:${CONTACT_EMAIL}`}
-        class="footer-link"
-      >{CONTACT_EMAIL}</a>
-      <a
-        href="/privacy"
-        class="footer-link"
-      >Privacy</a>
+      <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+        <a href={HOW_WE_WORK_PATH} class="footer-link">How we work</a>
+        <a href={ABOUT_PATH} class="footer-link">About</a>
+        <a href="/privacy" class="footer-link">Privacy</a>
+      </div>
+      <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+        <a href={`mailto:${CONTACT_EMAIL}`} class="footer-link">{CONTACT_EMAIL}</a>
+        <a href={BRIEF_PATH} class="footer-link">Submit a brief</a>
+      </div>
     </nav>
   </div>
 

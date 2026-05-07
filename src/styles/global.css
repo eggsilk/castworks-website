@@ -77,3 +77,33 @@
 [data-reveal-delay="2"] { transition-delay: 0.16s; }
 [data-reveal-delay="3"] { transition-delay: 0.24s; }
 [data-reveal-delay="4"] { transition-delay: 0.32s; }
+[data-reveal-delay="5"] { transition-delay: 0.40s; }
+
+/* Respect reduced-motion preferences — disable hero + reveal animations,
+   and quiet the splash/sample tear-sheet hover/rotation transforms. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-animate,
+  .hero-delay-1,
+  .hero-delay-2,
+  .hero-delay-3,
+  .hero-delay-4 {
+    animation: none !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .splash-tear-sheet,
+  .mini-tear-sheet,
+  .tear-sheet {
+    transition: none !important;
+    transform: none !important;
+  }
+}

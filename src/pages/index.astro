@@ -1,31 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Nav from "../components/Nav.astro";
-import Hero from "../components/Hero.astro";
-import ServiceOverview from "../components/ServiceOverview.astro";
-import ParadigmShift from "../components/ParadigmShift.astro";
-import Methodology from "../components/Methodology.astro";
-import TerminalCTA from "../components/TerminalCTA.astro";
-import Footer from "../components/Footer.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SplashHero from "../components/SplashHero.astro";
 ---
 
-<Layout>
-  <Nav />
+<Layout redirectLegacyHashes={true}>
+  <SiteNav variant="splash" />
 
-  <Hero />
-
-  <ServiceOverview />
-
-  <ParadigmShift />
-
-  <Methodology />
-
-  <TerminalCTA />
-
-  <Footer />
-
-  {/*
-    Backlog:
-      - Mobile refinement pass
-  */}
+  <SplashHero />
+  {/* No footer on splash, by design. */}
 </Layout>

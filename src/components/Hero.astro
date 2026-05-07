@@ -1,13 +1,13 @@
 ---
-import { APPLY_ANCHOR, HOW_IT_WORKS_ANCHOR } from "../config";
+// Softened hero used on /home — methodology page.
+// CTAs intentionally removed (this page is the methodology, not the entry).
+// Headline + sub only.
 ---
 
 <section
   class="relative min-h-screen flex flex-col"
   style="background: var(--color-bg);"
 >
-  <!-- Hero content — vertically centered in remaining space.
-       Nav is fixed at the document level; pt-32 keeps content clear of it. -->
   <div
     class="flex-1 flex items-center px-6 md:px-10 lg:px-16 pt-32 md:pt-36 pb-16"
   >
@@ -17,10 +17,10 @@ import { APPLY_ANCHOR, HOW_IT_WORKS_ANCHOR } from "../config";
         class="hero-animate font-serif leading-[0.96] tracking-tight"
         style="
           color: var(--color-ink);
-          font-size: clamp(2.75rem, 7.5vw, 7rem);
+          font-size: clamp(2.5rem, 6vw, 5.5rem);
         "
       >
-        The creators your database missed.
+        The work between a database and a campaign.
       </h1>
 
       <!-- Sub-line -->
@@ -29,32 +29,8 @@ import { APPLY_ANCHOR, HOW_IT_WORKS_ANCHOR } from "../config";
         style="color: var(--color-ink-muted);"
       >
         <p class="text-lg md:text-xl leading-relaxed">
-          A curated creator pipeline. Sourced, vetted, warmed up.
+          Strategy, sourcing, outreach, hand-off — handled in-house, per brief.
         </p>
-      </div>
-
-      <!-- CTAs -->
-      <div
-        class="hero-animate hero-delay-2 mt-10 md:mt-14 flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-8"
-      >
-        <a
-          href={APPLY_ANCHOR}
-          class="inline-flex items-center gap-3 text-base font-medium px-7 py-4 rounded-md transition-all duration-200 hover:opacity-90"
-          style="background: var(--color-accent); color: var(--color-dark-text);"
-        >
-          Submit a brief
-          <span aria-hidden="true">&rarr;</span>
-        </a>
-
-        <a
-          href={HOW_IT_WORKS_ANCHOR}
-          class="text-base transition-colors duration-200"
-          style="color: var(--color-ink-muted); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px;"
-          onmouseover="this.style.color='var(--color-ink)'"
-          onmouseout="this.style.color='var(--color-ink-muted)'"
-        >
-          How it works
-        </a>
       </div>
     </div>
   </div>

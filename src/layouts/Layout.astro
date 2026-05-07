@@ -12,11 +12,24 @@ interface Props {
   title?: string;
   /** Path of the current page, used to build canonical + og:url. Defaults to "/". */
   path?: string;
+  /**
+   * If true, an inline pre-render script in <head> redirects legacy hash
+   * anchors (#apply, #how-it-works) to their new pages. Used on the splash
+   * route so users landing on the old anchors don't see the splash flash.
+   */
+  redirectLegacyHashes?: boolean;
 }
 
-const { title = COMPANY_NAME, path = "/" } = Astro.props;
+const { title = COMPANY_NAME, path = "/", redirectLegacyHashes = false } = Astro.props;
 const canonical = new URL(path, SITE_URL).toString();
 const ogImage = new URL("/og-image-2.png", SITE_URL).toString();
+
+// Per-path social copy, aligned to the new tagline.
+const isSplash = path === "/";
+const ogImageAlt = isSplash
+  ? `${COMPANY_NAME} — ${TAGLINE}`
+  : `${COMPANY_NAME} — ${title}`;
+const twitterTitle = isSplash ? `${COMPANY_NAME} — ${TAGLINE}` : title;
 
 // JSON-LD Organization schema. Search engines and link unfurlers use this for
 // rich results. Kept minimal — only fields we can stand behind.
@@ -43,6 +56,17 @@ const orgSchema = {
     <meta name="theme-color" content="#FAF8F3" />
     <meta name="robots" content="index,follow" />
     <meta name="description" content={META_DESCRIPTION} />
+
+    {redirectLegacyHashes && (
+      <script is:inline>
+        (function() {
+          var h = window.location.hash;
+          if (h === '#apply') { window.location.replace('/brief'); }
+          else if (h === '#how-it-works') { window.location.replace('/home#how-it-works'); }
+        })();
+      </script>
+    )}
+
     <title>{title}</title>
 
     <link rel="canonical" href={canonical} />
@@ -57,14 +81,11 @@ const orgSchema = {
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="CastWorks — the creators your database missed."
-    />
+    <meta property="og:image:alt" content={ogImageAlt} />
 
     <!-- Twitter card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:title" content={twitterTitle} />
     <meta name="twitter:description" content={TAGLINE} />
     <meta name="twitter:image" content={ogImage} />
 
@@ -78,7 +99,12 @@ const orgSchema = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
       rel="stylesheet"
     />
   </head>

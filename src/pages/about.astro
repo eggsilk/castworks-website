@@ -1,0 +1,88 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SiteNav from "../components/SiteNav.astro";
+import Footer from "../components/Footer.astro";
+import { COMPANY_NAME, BRIEF_PATH } from "../config";
+---
+
+<Layout title={`How we work — ${COMPANY_NAME}`} path="/about">
+  <SiteNav variant="full" />
+
+  <main
+    class="px-6 md:px-10 lg:px-16 pt-32 md:pt-40 pb-24 md:pb-32"
+    style="background: var(--color-bg);"
+  >
+    <article class="max-w-2xl mx-auto">
+      <h1
+        class="font-serif leading-[1.02] tracking-tight"
+        style="
+          color: var(--color-ink);
+          font-size: clamp(2.25rem, 5vw, 3.75rem);
+        "
+      >
+        A note on how we work.
+      </h1>
+
+      <div
+        class="mt-12 md:mt-14 space-y-7 leading-relaxed"
+        style="color: var(--color-ink-muted); font-size: clamp(1.0625rem, 1.4vw, 1.25rem); line-height: 1.7;"
+      >
+        <p>
+          Sponsorship marketing has a sourcing problem. Databases give brands a
+          list and tell them to do the rest. Agencies sell retainers built for
+          someone else's scale. Most small and mid-sized brands end up running
+          creator campaigns the same way they run cold email — at volume, with
+          a roster they don't really know.
+        </p>
+
+        <p>
+          We started CastWorks because the work between the database and the
+          campaign is the work that decides whether a campaign returns. Skip
+          it and the rest of the spend is a coin flip.
+        </p>
+
+        <p>
+          We built our own tooling for the parts that scale. Audience analysis.
+          Content fit. Commercial pattern matching. The parts that don't scale,
+          we still do by hand. Reading a creator's last six months of work.
+          Drafting a first message that reads like it's from a person.
+          Confirming interest before any name reaches a brand.
+        </p>
+
+        <p>
+          What you get is not a list. It's a curated pipeline of creators who
+          already know your brief and are open to the conversation. We do this
+          for a small number of brands at a time. The fewer briefs we run, the
+          better each one runs.
+        </p>
+
+        <p>
+          If that's the kind of partner you're looking for, submit a brief. If
+          we're a fit, you'll hear back within two business days.
+        </p>
+      </div>
+
+      <div class="mt-16 md:mt-20">
+        <a
+          href={BRIEF_PATH}
+          class="inline-flex items-center gap-2 text-base transition-colors duration-200"
+          style="color: var(--color-ink); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px;"
+          onmouseover="this.style.color='var(--color-accent)'"
+          onmouseout="this.style.color='var(--color-ink)'"
+        >
+          Submit a brief
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+
+      <p
+        class="mt-16 text-sm italic"
+        style="color: var(--color-ink-subtle); font-family: var(--font-serif);"
+      >
+        — Ege Ipek, Berlin
+      </p>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>

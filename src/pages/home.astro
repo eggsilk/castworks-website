@@ -1,0 +1,33 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SiteNav from "../components/SiteNav.astro";
+import Hero from "../components/Hero.astro";
+import ServiceOverview from "../components/ServiceOverview.astro";
+import ParadigmShift from "../components/ParadigmShift.astro";
+import Methodology from "../components/Methodology.astro";
+import Standards from "../components/Standards.astro";
+import Coverage from "../components/Coverage.astro";
+import SignOffCTA from "../components/SignOffCTA.astro";
+import Footer from "../components/Footer.astro";
+import { COMPANY_NAME } from "../config";
+---
+
+<Layout title={`How we work — ${COMPANY_NAME}`} path="/home">
+  <SiteNav variant="full" />
+
+  <Hero />
+
+  <ServiceOverview />
+
+  <ParadigmShift />
+
+  <Methodology />
+
+  <Standards />
+
+  <Coverage />
+
+  <SignOffCTA />
+
+  <Footer />
+</Layout>

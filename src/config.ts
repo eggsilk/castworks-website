@@ -1,12 +1,17 @@
 export const COMPANY_NAME = "CastWorks";
 export const CONTACT_EMAIL = "hello@castworks.co";
-export const APPLY_ANCHOR = "#apply"; // intake form anchor on same page
-export const HOW_IT_WORKS_ANCHOR = "#how-it-works";
+
+// Page paths
+export const BRIEF_PATH = "/brief";
+export const HOW_WE_WORK_PATH = "/home#how-it-works";
+export const ABOUT_PATH = "/about";
+export const SAMPLE_BRIEF_PATH = "/sample-brief";
+export const HOME_PATH = "/home";
 
 export const FORMSPREE_ENDPOINT = "https://formspree.io/f/xkokeeen";
 
 export const SITE_URL = "https://castworks.co";
 
-export const TAGLINE = "The creators your database missed.";
+export const TAGLINE = "Creator marketing, hand-built.";
 export const META_DESCRIPTION =
-  "A curated creator pipeline. Sourced, vetted, warmed up. Built for small-to-mid-sized DTC brands.";
+  "Hand-built creator pipelines for small-to-mid-sized brands. Strategy, sourcing, outreach, hand-off — done by humans, one brief at a time.";
