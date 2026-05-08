@@ -81,7 +81,7 @@ import { CONTACT_EMAIL, FORMSPREE_ENDPOINT } from "../config";
       <div>
         <label
           for="q-company"
-          class="block text-xs uppercase tracking-[0.22em]"
+          class="block text-xs uppercase tracking-[0.1em]"
           style="color: var(--color-ink-subtle);"
         >
           01 — Company
@@ -105,7 +105,7 @@ import { CONTACT_EMAIL, FORMSPREE_ENDPOINT } from "../config";
       <!-- Q2: Budget -->
       <fieldset>
         <legend
-          class="block text-xs uppercase tracking-[0.22em]"
+          class="block text-xs uppercase tracking-[0.1em]"
           style="color: var(--color-ink-subtle);"
         >
           02 — Budget
@@ -140,7 +140,7 @@ import { CONTACT_EMAIL, FORMSPREE_ENDPOINT } from "../config";
       <div>
         <label
           for="q-history"
-          class="block text-xs uppercase tracking-[0.22em]"
+          class="block text-xs uppercase tracking-[0.1em]"
           style="color: var(--color-ink-subtle);"
         >
           03 — History
@@ -163,7 +163,7 @@ import { CONTACT_EMAIL, FORMSPREE_ENDPOINT } from "../config";
       <!-- Q4: Email + name — two fields side by side on md+ -->
       <div>
         <div
-          class="block text-xs uppercase tracking-[0.22em]"
+          class="block text-xs uppercase tracking-[0.1em]"
           style="color: var(--color-ink-subtle);"
         >
           04 — You
@@ -220,7 +220,7 @@ import { CONTACT_EMAIL, FORMSPREE_ENDPOINT } from "../config";
           class="inline-flex items-center gap-3 text-base font-medium px-7 py-4 rounded-md transition-all duration-200 hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
           style="background: var(--color-accent); color: var(--color-dark-text);"
         >
-          <span data-submit-label>Submit</span>
+          <span data-submit-label>Send brief</span>
           <span aria-hidden="true">&rarr;</span>
         </button>
         <p
@@ -382,7 +382,7 @@ import { CONTACT_EMAIL, FORMSPREE_ENDPOINT } from "../config";
   const submitLabel = submitBtn?.querySelector<HTMLElement>("[data-submit-label]") ?? null;
 
   if (form && thanks && errorBlock && submitBtn && submitLabel) {
-    const defaultLabel = submitLabel.textContent ?? "Submit";
+    const defaultLabel = submitLabel.textContent ?? "Send brief";
 
     form.querySelectorAll<HTMLElement>(".intake-input").forEach((el) => {
       el.addEventListener("blur", () => el.classList.add("touched"));

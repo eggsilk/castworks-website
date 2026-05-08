@@ -43,6 +43,11 @@
     background: var(--color-accent);
     color: var(--color-dark-text);
   }
+
+  /* Anchor targets need to clear the fixed nav (~88px at md breakpoint). */
+  [id] {
+    scroll-margin-top: 88px;
+  }
 }
 
 /* Hero entry animation — staggered fade-in */
